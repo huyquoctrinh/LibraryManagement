@@ -1,17 +1,13 @@
 #include "sqlite3.h"
 #include <iostream>
 #include<string>
-#include "./src/Database/Database.h"
+// #include "./src/Database/Database.h"
+#include"./src/Password/Password.h"  
 using namespace std;
-
-
 
 int main()
 {
-    string filename = "./database/databaseName.db";
-    Database f = Database(filename);
-    string sql = "INSERT or IGNORE INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "  \
-                "VALUES (1, 'Huy', 18, 'HCM', 500000 ); ";
-    f.Query(sql);
-
+    string filename = "./database/account.db";
+    Password a(2,"showmaker","edgvenuoc");
+    a.pushToDatabase();
 }
