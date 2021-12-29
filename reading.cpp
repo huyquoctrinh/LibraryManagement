@@ -1,34 +1,47 @@
-#include "reading.h"
+#include "Reading.h"
 
-const QString &Reading::title() const
+string Reading::getTitle()
 {
-    return _title;
+	return _title;
 }
 
-void Reading::setTitle(const QString &newTitle)
+string Reading::getAuthors()
 {
-    _title = newTitle;
+	return _authors;
 }
 
-const QString &Reading::authors() const
+int Reading::getPublicationYear()
 {
-    return _authors;
+	return _publicationYear;
 }
 
-void Reading::setAuthors(const QString &newAuthors)
+void Reading::setTitle(string title)
 {
-    _authors = newAuthors;
+	_title = title;
 }
 
-Reading::Reading()
+void Reading::setAuthors(string authors)
 {
-
+	_authors = authors;
 }
 
-Reading::Reading(const QString &id, const QString &category, const QString &status, int availableCount,
-                 int totalCount, const QString &title, const QString &authors)
-    : Content(id, category, status, availableCount, totalCount)
+void Reading::setPublicationYear(int publicYear)
 {
-    this->_title = title;
-    this->_authors = authors;
+	_publicationYear = publicYear;
+}
+
+Reading::Reading() : Content()
+{
+	_publicationYear = 2000;
+}
+
+Reading::Reading(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear): Content(id, cat, status, availCount, totalCount)
+{
+	_title = title;
+	_authors = authors;
+	_publicationYear = publicYear;
+}
+
+Reading::~Reading()
+{
 }

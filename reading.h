@@ -1,22 +1,30 @@
-#ifndef READING_H
-#define READING_H
+#pragma once
+#include "Content.h"
+#include <string>
 
-#include <QWidget>
-#include "content.h"
+using namespace std;
 
 class Reading : public Content
 {
+	//Cac thuoc tinh
 private:
-    QString _title;
-    QString _authors;
-
+	string _title;
+	string _authors;
+	int _publicationYear;
+	//Cac ham getter
 public:
-    Reading();
-    Reading(const QString &id, const QString &category, const QString &status, int availableCount, int totalCount, const QString &title, const QString &authors);
-    const QString &title() const;
-    void setTitle(const QString &newTitle);
-    const QString &authors() const;
-    void setAuthors(const QString &newAuthors);
-};
+	string getTitle();
+	string getAuthors();
+	int getPublicationYear();
+	//Cac ham setter
+public:
+	void setTitle(string);
+	void setAuthors(string);
+	void setPublicationYear(int);
+	//Cac phuong thuc khoi tao va huy
+public:
+	Reading();
+    Reading(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear);
 
-#endif // READING_H
+	virtual ~Reading();
+};

@@ -7,14 +7,13 @@ BorrowedWidget::BorrowedWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     QVector<Reading> results;
-    results << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin")
-            << Reading("20120022", "Math", "avaiable", 2, 15, "Algebra", "Kevin");
+    results << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
+            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
+            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
+            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
+            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
+            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
+            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999);
     displayContentResults(results);
 }
 
@@ -28,7 +27,10 @@ void addReadingItem(Reading reading, Ui::BorrowedWidget* ui)
     QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->listWidget);
     ui->listWidget->addItem (listWidgetItem);
     BorrowedItemWidget *theWidgetItem = new BorrowedItemWidget;
-    theWidgetItem->setContent(reading.title(), reading.category(), reading.authors(), true);
+    QString title = QString::fromStdString(reading.getTitle());
+    QString category = QString::fromStdString(ToValue(reading.getCategory()));
+    QString authors = QString::fromStdString(reading.getAuthors());
+    theWidgetItem->setContent(title, category, authors, true);
     listWidgetItem->setSizeHint (theWidgetItem->sizeHint());
     ui->listWidget->setItemWidget (listWidgetItem, theWidgetItem);
 }

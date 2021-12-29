@@ -1,58 +1,89 @@
-#include "content.h"
+#include "Content.h"
 
-const QString &Content::id() const
-{
-    return _id;
+string ToValue(Category category) {
+    switch(category) {
+        case catBook: return "Book";
+        case catAcademicJournal: return "Academic Journal";
+    }
+    return "";
 }
 
-void Content::setId(const QString &newId)
-{
-    _id = newId;
+bool ToValue(Status stt) {
+   switch(stt) {
+       case sttAvailable: return true;
+       case sttUnvailable: return false;
+   }
+   return false;
 }
 
-const QString &Content::category() const
+Content::Content(): _availableCount(0), _totalCount(0)
 {
-    return _category;
 }
 
-void Content::setCategory(const QString &newCategory)
+Content::Content(string id, Category cat, Status status, int availCount, int totalCount)
 {
-    _category = newCategory;
+	_id = id;
+	_category = cat;
+	_status = status;
+	_availableCount = availCount;
+	_totalCount = totalCount;
 }
 
-const QString &Content::status() const
+Content::~Content()
 {
-    return _status;
 }
 
-void Content::setStatus(const QString &newStatus)
+string Content::getId()
 {
-    _status = newStatus;
+	return _id;
 }
 
-int Content::availableCount() const
+Category Content::getCategory()
 {
-    return _availableCount;
+	return _category;
 }
 
-void Content::setAvailableCount(int newAvailableCount)
+Status Content::getStatus()
 {
-    _availableCount = newAvailableCount;
+	return _status;
 }
 
-int Content::totalCount() const
+int Content::getAvailableCount()
 {
-    return _totalCount;
+	return _availableCount;
 }
 
-Content::Content()
+int Content::getTotalCount()
 {
-
+	return _totalCount;
 }
 
-Content::Content(const QString &id, const QString &category, const QString &status, int availableCount, int totalCount) : _id(id),
-    _category(category),
-    _status(status),
-    _availableCount(availableCount),
-    _totalCount(totalCount)
-{}
+void Content::setId(string id)
+{
+	_id = id;
+}
+
+void Content::setCategory(Category cat)
+{
+	_category = cat;
+}
+
+void Content::setStatus(Status status)
+{
+	_status = status;
+}
+
+void Content::setAvailableCount(int availCount)
+{
+	_availableCount = availCount;
+}
+
+void Content::setTotalCount(int totalCount)
+{
+	_totalCount = totalCount;
+}
+
+bool Content::isAvailable()
+{
+	return _availableCount > 0;
+}

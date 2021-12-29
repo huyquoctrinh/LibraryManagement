@@ -9,17 +9,33 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AcademicJournalParser.cpp \
+    Account.cpp \
+    Basic.cpp \
+    Book.cpp \
+    BookParser.cpp \
+    Content.cpp \
+    DateTime.cpp \
+    Library.cpp \
+    MemberShip.cpp \
+    Premium.cpp \
+    Reading.cpp \
+    Reservation.cpp \
+    ReservationData.cpp \
+    Staff.cpp \
+    StaffParser.cpp \
+    Student.cpp \
+    StudentParser.cpp \
+    User.cpp \
     bookwidgetitem.cpp \
     borroweditemwidget.cpp \
     borrowedwidget.cpp \
-    content.cpp \
     contentdetailsdialog.cpp \
     logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
     modifycontentwidget.cpp \
     modifyuserwidget.cpp \
-    reading.cpp \
     regulationwidget.cpp \
     searchingwidget.cpp \
     signupwindow.cpp \
@@ -27,17 +43,37 @@ SOURCES += \
     userinfowidget.cpp
 
 HEADERS += \
+    AcademicJournalParser.h \
+    Account.h \
+    Basic.h \
+    Book.h \
+    BookParser.h \
+    Content.h \
+    ContentParser.h \
+    DateTime.h \
+    Library.h \
+    MemberShip.h \
+    Premium.h \
+    Reading.h \
+    Reservation.h \
+    ReservationData.h \
+    Staff.h \
+    StaffParser.h \
+    Student.h \
+    StudentParser.h \
     TabProxy.h \
+    UniversityEnum.h \
+    User.h \
+    UserParser.h \
+    UserTypeEnum.h \
     bookwidgetitem.h \
     borroweditemwidget.h \
     borrowedwidget.h \
-    content.h \
     contentdetailsdialog.h \
     logindialog.h \
     mainwindow.h \
     modifycontentwidget.h \
     modifyuserwidget.h \
-    reading.h \
     regulationwidget.h \
     searchingwidget.h \
     signupwindow.h \

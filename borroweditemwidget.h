@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QDebug>
+#include "Reading.h"
 
 namespace Ui {
 class BorrowedItemWidget;

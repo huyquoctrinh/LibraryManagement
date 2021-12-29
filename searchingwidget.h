@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "bookwidgetitem.h"
-#include "reading.h"
+#include "Reading.h"
 #include "contentdetailsdialog.h"
 
 namespace Ui {
