@@ -9,7 +9,7 @@ private:
 	DateTime _startTime;
 	DateTime _expiredTime;
 	Content _content;
-	User _borrower;
+    User* _borrower;
 public:
 	bool isExpired();
 	int getTimeLeft();
@@ -24,9 +24,9 @@ public:
 	void setStartTime(DateTime);
 	void setExpiredTime(DateTime);
 	void setContent(Content);
-	void setBorrower(User);
+    void setBorrower(User*);
 	//Cac phuong thuc khoi tao, huy
 public:
 	Reservation();
-	Reservation(DateTime start, DateTime expire, Content content, User borrower);
+    Reservation(DateTime start, DateTime expire, Content content, User* borrower);
 };

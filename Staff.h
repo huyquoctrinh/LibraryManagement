@@ -1,10 +1,11 @@
 #pragma once
+#include <vector>
 #include "User.h"
 #include "Student.h"
 #include "UniversityEnum.h"
 #include "ReservationData.h"
 
-class Staff :public User
+class Staff : public User
 {
 private:
 public:
@@ -14,11 +15,11 @@ public:
 	bool addStudent(Student);
 	bool blockStudent();
 	ReservationData getAllReservationData();
-	Student* getStudents();
+    vector<Student> getStudents();
 	UserType getUserType();
 	//Phuong thuc khoi tao, huy
 public:
 	Staff();
-	Staff(string id, string name, DateTime dateOfBirth, Account account);
-
+    Staff(string name, DateTime dateOfBirth, bool gender, Account account);
+    ~Staff();
 };

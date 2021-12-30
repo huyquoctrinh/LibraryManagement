@@ -1,12 +1,15 @@
 #pragma once
 #include "MemberShip.h"
 
-class Basic : MemberShip
+#define MEMBERSHIP_BASIC "Basic"
+#define BASIC_FEE 60
+
+class Basic : public MemberShip
 {
 public:
 	void getMaxBorrowDate(Content);
 public:
 	//Cac phuong thuc khoi tao, huy
-	Basic();
-	Basic(string typeName, double fee);
+    Basic();
+    Basic(const Basic&);
 };

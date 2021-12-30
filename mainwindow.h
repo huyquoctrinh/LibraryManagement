@@ -18,6 +18,7 @@
 #include "modifyuserwidget.h"
 
 #include "logindialog.h"
+#include "User.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,7 +35,7 @@ public:
 private slots:
     void on_listWidget_itemSelectionChanged();
 
-    void receiveLogin(QString, QString);
+    void receiveLogin(User* currentUser);
 
     void on_btnLogInOut_clicked();
 
@@ -49,7 +50,8 @@ private:
 
     LoginDialog* loginDialog = NULL;
 
-    QString currentUser = "";
+public:
+    User* _currentUser;
 
 private:
     void addMenuItem(QVector<QString>, QVector<QString>);

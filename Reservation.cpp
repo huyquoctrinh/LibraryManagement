@@ -27,7 +27,7 @@ Content Reservation::getContent()
 
 User Reservation::getBorrower()
 {
-	return _borrower;
+    return *_borrower;
 }
 
 void Reservation::setStartTime(DateTime startTime)
@@ -45,7 +45,7 @@ void Reservation::setContent(Content content)
 	_content = content;
 }
 
-void Reservation::setBorrower(User borrower)
+void Reservation::setBorrower(User* borrower)
 {
 	_borrower = borrower;
 }
@@ -54,7 +54,7 @@ Reservation::Reservation()
 {
 }
 
-Reservation::Reservation(DateTime start, DateTime expire, Content content, User borrower)
+Reservation::Reservation(DateTime start, DateTime expire, Content content, User* borrower)
 {
 	_startTime = start;
 	_expiredTime = expire;

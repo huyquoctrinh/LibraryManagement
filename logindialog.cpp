@@ -7,6 +7,9 @@ LoginDialog::LoginDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+    ui->lblFailedLogin->setVisible(false);
+    ui->lblSignUpStt->setVisible(false);
+
 }
 
 LoginDialog::~LoginDialog()
@@ -22,9 +25,36 @@ void LoginDialog::on_btnSignup_clicked()
 
 void LoginDialog::on_btnCreate_clicked()
 {
-    if (true) // successfully create an account
+    // Student's info
+    string name = ui->txtName->text().toStdString();
+    bool gender = ui->rdbMale->isChecked() ? false : true;
+    QDate dob = ui->edtDateOfBirth->date();
+    DateTime dateOfBirth(dob.day(), dob.month(), dob.year());
+    QDate rnd = ui->edtRenewalDate->date();
+    DateTime renewalDate(rnd.day(), rnd.month(), rnd.year());
+    University uni = toKey(ui->txtUni->text().toStdString());
+    string sid = ui->txtSID->text().toStdString();
+
+    MemberShip* membership;
+    if (ui->rdbBasic->isChecked())
+        membership = new Basic();
+    else
+        membership = new Premium();
+    Account account(ui->txtNewUsername->text().toStdString(), ui->txtNewPassword->text().toStdString());
+    Student newStudent(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
+
+    // Sign up
+    bool signUpResult = Library::signUp(&newStudent);
+
+    if (signUpResult) // successfully create an account
     {
-        ui->stackedWidget->setCurrentIndex(0);
+        ui->lblSignUpStt->setText(SUCCESSFUL_SIGN_UP);
+        ui->lblSignUpStt->setVisible(true);
+    }
+    else
+    {
+        ui->lblSignUpStt->setText(FAILED_SIGN_UP);
+        ui->lblSignUpStt->setVisible(true);
     }
 }
 
@@ -37,12 +67,19 @@ void LoginDialog::on_btnBackToLogin_clicked()
 
 void LoginDialog::on_btnLogin_clicked()
 {
-    QString username = ui->txtUsername->text();
-    QString password = ui->txtPass->text();
+    string username = ui->txtUsername->text().toStdString();
+    string password = ui->txtPass->text().toStdString();
 
-    if (true)  // Successfully login
+    Account loginAccount(username, password);
+    User* loginUser = Library::signIn(loginAccount);
+
+    if (loginUser == NULL)  // Failed to login
     {
-        emit doLogin(username, password);
+        ui->lblFailedLogin->setVisible(true);
+    }
+    else // Successfully login
+    {
+        emit doLogin(loginUser);
         this->close();
     }
 }

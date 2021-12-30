@@ -12,7 +12,13 @@ MemberShip::MemberShip()
 MemberShip::MemberShip(string typeName, double fee)
 {
 	_typeName = typeName;
-	_fee = fee;
+    _fee = fee;
+}
+
+MemberShip::MemberShip(const MemberShip & other)
+{
+    this->_typeName = other._typeName;
+    this->_fee = other._fee;
 }
 
 string MemberShip::getTypename()

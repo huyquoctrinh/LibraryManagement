@@ -4,10 +4,11 @@ void Premium::getMaxBorrowDate(Content)
 {
 }
 
-Premium::Premium() : MemberShip()
+Premium::Premium() : MemberShip(MEMBERSHIP_PREMIUM, PREMIUM_FEE)
 {
 }
 
-Premium::Premium(string typeName, double fee) : MemberShip(typeName, fee)
+Premium::Premium(const Premium &other) : MemberShip(other)
 {
+
 }

@@ -8,13 +8,9 @@ Account::Account(string username, string pass) : _username(username), _password(
 {
 }
 
-bool Account::signIn()
+bool Account::changePassword(string newPassword)
 {
-	return false;
-}
-
-bool Account::changePassword()
-{
+    //
 	return false;
 }
 

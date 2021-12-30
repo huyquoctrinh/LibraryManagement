@@ -14,7 +14,8 @@ public:
 public:
 	//Cac phuong thuc khoi tao, huy
 	MemberShip();
-	MemberShip(string typeName, double fee);
+    MemberShip(string typeName, double fee);
+    MemberShip(const MemberShip&);
 public:
 	//Cac getter
 	string getTypename();

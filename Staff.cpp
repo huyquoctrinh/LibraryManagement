@@ -30,9 +30,9 @@ ReservationData Staff::getAllReservationData()
 	return ReservationData();
 }
 
-Student * Staff::getStudents()
+vector<Student> Staff::getStudents()
 {
-	return nullptr;
+    return vector<Student>();
 }
 
 UserType Staff::getUserType() {
@@ -43,6 +43,11 @@ Staff::Staff() : User()
 {
 }
 
-Staff::Staff(string id, string name, DateTime dateOfBirth, Account account) : User(id, name, dateOfBirth, account)
+Staff::Staff(string name, DateTime dateOfBirth, bool gender, Account account)
+    : User(name, dateOfBirth, gender, account)
 {
+}
+
+Staff::~Staff() {
+
 }

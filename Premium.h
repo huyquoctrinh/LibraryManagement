@@ -1,12 +1,15 @@
 #pragma once
 #include "MemberShip.h"
 
-class Premium : MemberShip
+#define MEMBERSHIP_PREMIUM "Premium"
+#define PREMIUM_FEE 120
+
+class Premium : public MemberShip
 {
 public:
 	void getMaxBorrowDate(Content);
 public:
 	//Cac phuong thuc khoi tao, huy
-	Premium();
-	Premium(string typeName, double fee);
+    Premium();
+    Premium(const Premium&);
 };

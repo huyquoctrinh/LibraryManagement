@@ -4,10 +4,12 @@ void Basic::getMaxBorrowDate(Content)
 {
 }
 
-Basic::Basic() : MemberShip()
+Basic::Basic() : MemberShip(MEMBERSHIP_BASIC, BASIC_FEE)
 {
 }
 
-Basic::Basic(string typeName, double fee) : MemberShip(typeName, fee)
+Basic::Basic(const Basic &other) : MemberShip(other)
 {
+
 }
+

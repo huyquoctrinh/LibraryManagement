@@ -1,11 +1,25 @@
 #include "User.h"
 
+bool User::getGender() const
+{
+    return _gender;
+}
+
+void User::setGender(bool newGender)
+{
+    _gender = newGender;
+}
+
 User::User()
 {
 }
 
-User::User(string id, string name, DateTime dateOfBirth, Account account) :_id(id), _name(name), dateOfBirth(dateOfBirth), _account(account)
+User::User(string name, DateTime dateOfBirth, bool gender, Account account) : _name(name), _dateOfBirth(dateOfBirth), _gender(gender), _account(account)
 {
+}
+
+User::~User() {
+
 }
 
 Content * User::browseContent()
@@ -33,22 +47,22 @@ UserType User::getUserType()
     return uNone;
 }
 
-string User::getId()
+string User::getId() const
 {
 	return string();
 }
 
-string User::getName()
+string User::getName() const
 {
 	return string();
 }
 
-DateTime User::getDateOfBirth()
+DateTime User::getDateOfBirth() const
 {
 	return DateTime();
 }
 
-Account User::getAccount()
+Account User::getAccount() const
 {
 	return Account();
 }

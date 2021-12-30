@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     //initStaffMenu();
     initGuestMenu();
+    _currentUser = NULL;
     //initStudentMenu();
 }
 
@@ -111,44 +112,38 @@ void MainWindow::on_listWidget_itemSelectionChanged()
     ui->stackedWidget->setCurrentIndex(index);
 }
 
-void MainWindow::receiveLogin(QString userType, QString username)
+void MainWindow::receiveLogin(User *currentUser)
 {
-    if (true) // Successfully login
-    {
-        if (userType == "Student")
-        {
-            initStudentMenu();
-            ui->label->setText("Hello Student, " + username);
-            currentUser = username;
-        }
-        else if (userType == "Staff")
-        {
-            initStaffMenu();
-            ui->label->setText("Hello Staff, " + username);
-            currentUser = username;
-        }
-        QIcon icon(":/img/img/icon/logout.png");
-        ui->btnLogInOut->setIcon(icon);
-        ui->btnLogInOut->setText("Log out");
+    _currentUser = currentUser;
+    if (_currentUser->getUserType() == uStudent) { // Sign in as student
+        initStudentMenu();
+        //ui->label->setText("Hello Student, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
     }
+    else { // Sign in as staff
+        initStaffMenu();
+        //ui->label->setText("Hello Staff, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
+    }
+    QIcon icon(":/img/img/icon/logout.png");
+    ui->btnLogInOut->setIcon(icon);
+    ui->btnLogInOut->setText("Log out");
 }
 
 void MainWindow::on_btnLogInOut_clicked()
 {
-    if (currentUser == "")
-    {
+    if (_currentUser == NULL) {
         loginDialog = new LoginDialog();
         loginDialog->setModal(true);
         loginDialog->setAttribute(Qt::WA_DeleteOnClose);
         loginDialog->show();
-        connect(loginDialog, SIGNAL(doLogin(QString, QString)), this, SLOT(receiveLogin(QString, QString)));
+        connect(loginDialog, SIGNAL(doLogin(User*)), this, SLOT(receiveLogin(User*)));
     }
     else
     {
         QIcon icon(":/img/img/icon/login.png");
         ui->btnLogInOut->setIcon(icon);
         ui->btnLogInOut->setText("Log in/Sign up");
-        currentUser = "";
+        delete _currentUser;
+        _currentUser = NULL;
         initGuestMenu();
     }
 }

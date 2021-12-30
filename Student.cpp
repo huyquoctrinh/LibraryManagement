@@ -31,50 +31,68 @@ Student::Student() :User()
 {
 }
 
-Student::Student(string id, string name, DateTime dateOfBirth, Account account, string studentId, University uni, DateTime renewDate, MemberShip membership):User(id, name, dateOfBirth, account)
+Student::Student(string name, DateTime dateOfBirth, bool gender, Account account, string studentId, University uni, DateTime renewDate, MemberShip *membership)
+    :User(name, dateOfBirth, gender, account)
 {
 	_studentId = studentId;
 	_university = uni;
 	_renewalDate = renewDate;
-	_membership = membership;
+    _membership = membership;
 }
 
-string Student::getStudentId()
+Student::~Student()
+{
+    delete _membership;
+}
+
+string Student::getStudentId() const
 {
 	return _studentId;
 }
 
-University Student::getUniversity()
+University Student::getUniversity() const
 {
 	return _university;
 }
 
-DateTime Student::getRenewalDate()
+DateTime Student::getRenewalDate() const
 {
 	return _renewalDate;
 }
 
-MemberShip Student::getMemberShip()
+MemberShip* Student::getMemberShip() const
 {
 	return _membership;
 }
 
-void Student::getStudentId(string studentId)
+void Student::setStudentId(string studentId)
 {
 	_studentId = studentId;
 }
 
-void Student::getUniversity(University university)
+void Student::setUniversity(University university)
 {
 	_university = university;
 }
 
-void Student::getRenewalDate(DateTime renewTime)
+void Student::setRenewalDate(DateTime renewTime)
 {
 	_renewalDate = renewTime;
 }
 
-void Student::getMemberShip(MemberShip membership)
+void Student::setMemberShip(MemberShip* membership)
 {
 	_membership = membership;
+}
+
+
+
+University toKey(string str) {
+    if (str == "USSH")
+        return USSH;
+    if (str == "HCMUT")
+        return HCMUT;
+    if (str == "IU")
+        return IU;
+    return HCMUS;
 }

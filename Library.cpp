@@ -7,65 +7,41 @@ Content * Library::loadContents()
 
 Library::Library()
 {
-	_contents = NULL;
-	_contentCount = 0;
 }
 
-Library::Library(Content * contents, int contentCount)
+User *Library::signIn(Account account)
 {
-	_contentCount = contentCount;
-	_contents = new Content[_contentCount];
-	
+    // Sign in with account's info
+    // Return: User* if succeed, NULL if not.
+    if (false) {
+        // Example login as student
+        /*string name = "Lê Quang Trí";
+        bool gender = false;
+        DateTime dateOfBirth(3, 1, 2002);
+        DateTime renewalDate(30, 1, 2022);
+        University uni = toKey("HCMUS");
+        string sid = "20120022";
+        MemberShip* membership = new Basic();
+        Student* newStudent = new Student(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
+        newStudent->setId("11523");
+        return newStudent;
+        */
 
-	for (int i = 0; i < _contentCount; ++i)
-		_contents[i] = contents[i];
+
+        // Example login as staff
+        string name = "Lê Quang Trí";
+        bool gender = false;
+        DateTime dateOfBirth(3, 1, 2002);
+        Staff* loginStaff = new Staff(name, dateOfBirth, gender, account);
+        return loginStaff;
+    }
+
+    return NULL; // Failed to sign in
 }
 
-Library::Library(const Library& other)
+bool Library::signUp(Student* newStudent)
 {
-	_contentCount = other._contentCount;
-	_contents = new Content[_contentCount];
-	
-	for (int i = 0; i < _contentCount; ++i)
-		_contents[i] = other._contents[i];
-}
-
-Library::~Library()
-{
-	if (_contents)
-		delete _contents;
-}
-
-Library& Library::operator=(const Library& other)
-{
-	if (&other != this)
-	{
-		if (_contents)
-			delete _contents;
-		_contentCount = other._contentCount;
-		_contents = new Content[_contentCount];
-		
-
-		for (int i = 0; i < _contentCount; ++i)
-			_contents[i] = other._contents[i];
-	}
-	return *this;
-}
-
-Content * Library::getContents()
-{
-	return _contents;
-}
-
-int Library::getContentCount()
-{
-	return _contentCount;
-}
-
-void Library::setContents(Content *)
-{
-}
-
-void Library::setContentCount(int)
-{
+    // Sign up with newStudent's info
+    // Return: true if success, false if not.
+    return true;
 }
