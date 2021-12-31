@@ -5,9 +5,9 @@ bool BookParser::createContent(Content)
 	return false;
 }
 
-Content * BookParser::readContent()
+vector<Content*> BookParser::readContent()
 {
-	return nullptr;
+    return vector<Content*>();
 }
 
 bool BookParser::updateContent(Content)

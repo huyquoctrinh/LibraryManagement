@@ -11,7 +11,7 @@ string ToValue(Category category) {
 bool ToValue(Status stt) {
    switch(stt) {
        case sttAvailable: return true;
-       case sttUnvailable: return false;
+       case sttUnavailable: return false;
    }
    return false;
 }

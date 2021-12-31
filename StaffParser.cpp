@@ -1,6 +1,6 @@
 #include "StaffParser.h"
 
-bool StaffParser::createUser(User)
+bool StaffParser::createUser(User*)
 {
 	return false;
 }
@@ -10,7 +10,7 @@ User * StaffParser::readUser()
 	return nullptr;
 }
 
-bool StaffParser::updateUser(User)
+bool StaffParser::updateUser(User*)
 {
 	return false;
 }

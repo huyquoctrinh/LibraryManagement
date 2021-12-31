@@ -5,8 +5,8 @@ class StudentParser :public UserParser
 {
 private:
 public:
-	bool createUser(User);
+    bool createUser(User*);
 	User* readUser();
-	bool updateUser(User);
+    bool updateUser(User*);
 	bool deleteUser();
 };

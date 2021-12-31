@@ -13,7 +13,7 @@ private:
     MemberShip* _membership;
 public:
 	bool signUp();
-	void reserve(Content);
+    bool reserve(Content);
 	void returnReservation(Reservation);
 	Reservation* getReservations();
 	bool renewMembership();

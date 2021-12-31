@@ -5,7 +5,7 @@ class BookParser : ContentParser
 {
 public:
 	bool createContent(Content);
-	Content* readContent();
+    vector<Content*> readContent();
 	bool updateContent(Content);
 	bool deleteContent(Content);
 };

@@ -34,8 +34,8 @@ Book::Book() :Reading()
 {
 }
 
-Book::Book(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre)
-    : Reading(id, cat, status, availCount, totalCount, title, authors, publicYear)
+Book::Book(string id, Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre)
+    : Reading(id, catBook, status, availCount, totalCount, title, authors, publicYear)
 {
 	_publisher = publisher;
 	_ISBN = ISBN;

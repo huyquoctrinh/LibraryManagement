@@ -37,16 +37,6 @@ bool User::deactivate()
 	return false;
 }
 
-string User::getPermission()
-{
-	return string();
-}
-
-UserType User::getUserType()
-{
-    return uNone;
-}
-
 string User::getId() const
 {
 	return string();
@@ -81,4 +71,13 @@ void User::setDateOfBirth(DateTime)
 
 void User::setAccount(Account)
 {
+}
+
+string toValue(UserType type)
+{
+    switch(type) {
+    case uStudent: return "Student";
+    case uStaff: return "Staff";
+        return "None";
+    }
 }

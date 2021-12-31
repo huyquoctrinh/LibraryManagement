@@ -6,10 +6,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    _currentUser = NULL;
     ui->setupUi(this);
     //initStaffMenu();
     initGuestMenu();
-    _currentUser = NULL;
     //initStudentMenu();
 }
 
@@ -52,6 +52,7 @@ void MainWindow::initStudentMenu()
     addMenuItem(itemNames, itemIcons);
 
     searchingWidget = new SearchingWidget;
+    searchingWidget->setCurrentUser(_currentUser);
     borrowedWidget = new BorrowedWidget;
     userInfoWidget = new UserInfoWidget;
     regulationWidget = new RegulationWidget;
@@ -75,6 +76,7 @@ void MainWindow::initGuestMenu()
     addMenuItem(itemNames, itemIcons);
 
     searchingWidget = new SearchingWidget;
+    searchingWidget->setCurrentUser(_currentUser);
     regulationWidget = new RegulationWidget;
     ui->stackedWidget->insertWidget(0, searchingWidget);
     ui->stackedWidget->insertWidget(1, regulationWidget);
@@ -93,6 +95,7 @@ void MainWindow::initStaffMenu()
     addMenuItem(itemNames, itemIcons);
 
     searchingWidget = new SearchingWidget;
+    searchingWidget->setCurrentUser(_currentUser);
     modifyContentWidget = new ModifyContentWidget;
     modifyUserWidget = new ModifyUserWidget;
     borrowedWidget = new BorrowedWidget;

@@ -2,6 +2,12 @@
 #define CONTENTDETAILSDIALOG_H
 
 #include <QDialog>
+#include "Content.h"
+#include "Reading.h"
+#include "Book.h"
+#include "AcademicJournal.h"
+#include "User.h"
+#include "Student.h"
 
 namespace Ui {
 class ContentDetailsDialog;
@@ -16,7 +22,7 @@ public:
     ~ContentDetailsDialog();
 
 public:
-    void setInfo(QString title, QString usertype);
+    void setInfo(Reading* reading, User*);
     void setUsertype(QString usertype);
 
 private slots:
@@ -28,6 +34,8 @@ private slots:
 
 private:
     Ui::ContentDetailsDialog *ui;
+    User* _currentUser;
+    Reading* _currentReading;
 };
 
 #endif // CONTENTDETAILSDIALOG_H

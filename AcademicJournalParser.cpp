@@ -5,9 +5,9 @@ bool AcademicJournalParser::createContent(Content)
 	return false;
 }
 
-Content * AcademicJournalParser::readContent()
+vector<Content*> AcademicJournalParser::readContent()
 {
-	return nullptr;
+    return vector<Content*>();
 }
 
 bool AcademicJournalParser::updateContent(Content)

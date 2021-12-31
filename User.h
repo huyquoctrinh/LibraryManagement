@@ -14,8 +14,7 @@ private:
 	string _name;
     DateTime _dateOfBirth;
     bool _gender;
-	Account _account;
-	UserType _userType;
+    Account _account;
 public:
 	//Cac phuong thuc khoi tao, huy
 	User();
@@ -24,9 +23,8 @@ public:
 public:
 	Content* browseContent();
 	Content viewContent();
-	bool deactivate();
-	virtual string getPermission();
-    virtual UserType getUserType();
+    bool deactivate();
+    virtual UserType getUserType() = 0;
 	//Cac getter
 public:
     string getId() const;
@@ -42,3 +40,5 @@ public:
     void setAccount(Account);
     void setGender(bool newGender);
 };
+
+string toValue(UserType type);

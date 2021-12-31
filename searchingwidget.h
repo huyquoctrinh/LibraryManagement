@@ -4,7 +4,12 @@
 #include <QWidget>
 #include "bookwidgetitem.h"
 #include "Reading.h"
+#include "Library.h"
+#include "UserTypeEnum.h"
 #include "contentdetailsdialog.h"
+#include <vector>
+#include <QVector>
+#include <QDebug>
 
 namespace Ui {
 class SearchingWidget;
@@ -22,14 +27,23 @@ private:
     Ui::SearchingWidget *ui;
     ContentDetailsDialog *contentDetailsDialog;
 
-public:
-    QVector<Reading> results;
 
 public:
-    void displayContentResults(QVector<Reading> results);
+    QVector<Reading*> _results;
+    User* _currentUser;
+
+public:
+    void displayContentResults(QVector<Reading*> results);
+    void setCurrentUser(User*);
 
 private slots:
     void on_listWidget_currentRowChanged(int currentRow);
+    void on_btnSearch_clicked();
+    void on_chbJournal_stateChanged(int arg1);
+    void on_chbBook_stateChanged(int arg1);
+
 };
+
+
 
 #endif // SEARCHINGWIDGET_H

@@ -24,7 +24,7 @@ public:
 	//Cac phuong thuc khoi tao va huy
 public:
 	Book();
-    Book(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre);
+    Book(string id, Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre);
 
 	virtual ~Book();
 };

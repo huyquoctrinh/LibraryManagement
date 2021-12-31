@@ -18,7 +18,7 @@ public:
 	DateTime getStartTime();
 	DateTime getExpiredTime();
 	Content getContent();
-	User getBorrower();
+    User* getBorrower();
 
 	//Cac setter
 	void setStartTime(DateTime);

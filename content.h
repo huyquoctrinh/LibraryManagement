@@ -10,7 +10,7 @@ enum Category {
 
 enum Status {
     sttAvailable,
-    sttUnvailable
+    sttUnavailable
 };
 
 string ToValue(Category category);

@@ -5,7 +5,7 @@ bool Student::signUp()
 	return false;
 }
 
-void Student::reserve(Content)
+bool Student::reserve(Content)
 {
 }
 

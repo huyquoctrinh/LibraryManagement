@@ -25,9 +25,9 @@ Content Reservation::getContent()
 	return _content;
 }
 
-User Reservation::getBorrower()
+User* Reservation::getBorrower()
 {
-    return *_borrower;
+    return _borrower;
 }
 
 void Reservation::setStartTime(DateTime startTime)
