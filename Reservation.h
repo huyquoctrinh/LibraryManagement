@@ -4,6 +4,8 @@
 #include"Account.h"
 #include"Datetime.h"
 #include"ReservationFilter.h"
+#include"UserData.h"
+
 class Reservation{
 	private:
 		string _id;
@@ -119,4 +121,4 @@ class ReservationData:public Database{
 		}
 
 };
-
+#pragma once
