@@ -23,20 +23,27 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="chbReturned">
           <property name="text">
            <string>Returned</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_2">
+         <widget class="QCheckBox" name="chbBorrowing">
           <property name="text">
            <string>Borrowing</string>
           </property>
          </widget>
         </item>
        </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnFilter">
+       <property name="text">
+        <string>Apply Filter</string>
+       </property>
       </widget>
      </item>
      <item>

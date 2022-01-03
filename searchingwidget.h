@@ -4,7 +4,9 @@
 #include <QWidget>
 #include "bookwidgetitem.h"
 #include "Reading.h"
-#include "Library.h"
+#include "LibMS.h"
+#include "DBAccess.h"
+#include "SearchingFilter.h"
 #include "UserTypeEnum.h"
 #include "contentdetailsdialog.h"
 #include <vector>
@@ -30,11 +32,9 @@ private:
 
 public:
     QVector<Reading*> _results;
-    User* _currentUser;
 
 public:
     void displayContentResults(QVector<Reading*> results);
-    void setCurrentUser(User*);
 
 private slots:
     void on_listWidget_currentRowChanged(int currentRow);

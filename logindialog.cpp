@@ -44,7 +44,7 @@ void LoginDialog::on_btnCreate_clicked()
     Student newStudent(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
 
     // Sign up
-    bool signUpResult = Library::signUp(&newStudent);
+    bool signUpResult = LibMS::getInstance()->signUp(&newStudent);
 
     if (signUpResult) // successfully create an account
     {
@@ -71,7 +71,7 @@ void LoginDialog::on_btnLogin_clicked()
     string password = ui->txtPass->text().toStdString();
 
     Account loginAccount(username, password);
-    User* loginUser = Library::signIn(loginAccount);
+    User* loginUser = LibMS::getInstance()->signIn(loginAccount);
 
     if (loginUser == NULL)  // Failed to login
     {

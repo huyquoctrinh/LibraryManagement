@@ -18,6 +18,11 @@ User::User(string name, DateTime dateOfBirth, bool gender, Account account) : _n
 {
 }
 
+User::User(const User &other)
+{
+
+}
+
 User::~User() {
 
 }

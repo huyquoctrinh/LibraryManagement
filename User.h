@@ -19,6 +19,8 @@ public:
 	//Cac phuong thuc khoi tao, huy
 	User();
     User(string name, DateTime dateOfBirth, bool gender, Account account);
+    User(const User& other);
+
     virtual ~User();
 public:
 	Content* browseContent();

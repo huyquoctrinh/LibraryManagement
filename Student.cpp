@@ -5,17 +5,29 @@ bool Student::signUp()
 	return false;
 }
 
-bool Student::reserve(Content)
+bool Student::reserve(Reservation reservation)
 {
+    // Reserve a content
+    // If reserve successfully, return true. If not, return false
+    // Should call createReservation() function of ReservationData class
+    // Should check if the content is available or not
+    return true;
 }
 
 void Student::returnReservation(Reservation)
 {
 }
 
-Reservation * Student::getReservations()
+vector<Reservation> Student::getReservations(ReservationFilter)
 {
-	return nullptr;
+    vector<Reservation> res = {
+        Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), this),
+        Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), this),
+        Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), this)
+    };
+    DBAccess* dbaccess = DBAccess::getInstance();
+    res = dbaccess->getReservationDB().read
+    return res;
 }
 
 UserType Student::getUserType() {

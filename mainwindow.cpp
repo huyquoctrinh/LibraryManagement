@@ -2,15 +2,17 @@
 #include "ui_mainwindow.h"
 #include <QVector>
 
+LibMS* LibMS::_instance = NULL;
+DBAccess* DBAccess::_instance = NULL;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    _currentUser = NULL;
+    LibMS* libms = LibMS::getInstance();
+    DBAccess* dbaccess = DBAccess::getInstance();
     ui->setupUi(this);
-    //initStaffMenu();
     initGuestMenu();
-    //initStudentMenu();
 }
 
 MainWindow::~MainWindow()
@@ -52,7 +54,6 @@ void MainWindow::initStudentMenu()
     addMenuItem(itemNames, itemIcons);
 
     searchingWidget = new SearchingWidget;
-    searchingWidget->setCurrentUser(_currentUser);
     borrowedWidget = new BorrowedWidget;
     userInfoWidget = new UserInfoWidget;
     regulationWidget = new RegulationWidget;
@@ -76,7 +77,6 @@ void MainWindow::initGuestMenu()
     addMenuItem(itemNames, itemIcons);
 
     searchingWidget = new SearchingWidget;
-    searchingWidget->setCurrentUser(_currentUser);
     regulationWidget = new RegulationWidget;
     ui->stackedWidget->insertWidget(0, searchingWidget);
     ui->stackedWidget->insertWidget(1, regulationWidget);
@@ -95,7 +95,6 @@ void MainWindow::initStaffMenu()
     addMenuItem(itemNames, itemIcons);
 
     searchingWidget = new SearchingWidget;
-    searchingWidget->setCurrentUser(_currentUser);
     modifyContentWidget = new ModifyContentWidget;
     modifyUserWidget = new ModifyUserWidget;
     borrowedWidget = new BorrowedWidget;
@@ -117,8 +116,8 @@ void MainWindow::on_listWidget_itemSelectionChanged()
 
 void MainWindow::receiveLogin(User *currentUser)
 {
-    _currentUser = currentUser;
-    if (_currentUser->getUserType() == uStudent) { // Sign in as student
+    LibMS::getInstance()->setCurrentUser(currentUser);
+    if (currentUser->getUserType() == uStudent) { // Sign in as student
         initStudentMenu();
         //ui->label->setText("Hello Student, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
     }
@@ -133,7 +132,7 @@ void MainWindow::receiveLogin(User *currentUser)
 
 void MainWindow::on_btnLogInOut_clicked()
 {
-    if (_currentUser == NULL) {
+    if (LibMS::getInstance()->getCurrentUser() == NULL) {
         loginDialog = new LoginDialog();
         loginDialog->setModal(true);
         loginDialog->setAttribute(Qt::WA_DeleteOnClose);
@@ -145,8 +144,7 @@ void MainWindow::on_btnLogInOut_clicked()
         QIcon icon(":/img/img/icon/login.png");
         ui->btnLogInOut->setIcon(icon);
         ui->btnLogInOut->setText("Log in/Sign up");
-        delete _currentUser;
-        _currentUser = NULL;
+        LibMS::getInstance()->signOut();
         initGuestMenu();
     }
 }

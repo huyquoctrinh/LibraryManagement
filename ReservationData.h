@@ -1,5 +1,6 @@
 #pragma once
 #include "Reservation.h"
+#include "ReservationFilter.h"
 
 class ReservationData
 {
@@ -8,9 +9,8 @@ private:
 	int _reservationCount;
 public:
 	bool createReservation();
-	Reservation* readReservations();
-	Reservation* readExpiredReservations();
-	Reservation* readUnexpiredReservations();
+    Reservation* readAllReservations(ReservationFilter);
+    Reservation* readUserReservations();
 	bool updateReservation(Reservation);
 	bool deleteReservation(Reservation);
 	//Phuong thuc khoi tao, huy

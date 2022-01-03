@@ -9,7 +9,7 @@
 #include "UniversityEnum.h"
 #include "Basic.h"
 #include "Premium.h"
-#include "Library.h"
+#include "LibMS.h"
 
 #define SUCCESSFUL_SIGN_UP "Successful. Please back to login!"
 #define FAILED_SIGN_UP "Failed to create a new account!"

@@ -3,6 +3,10 @@
 #include "UniversityEnum.h"
 #include "MemberShip.h"
 #include "Reservation.h"
+#include "ReservationFilter.h"
+#include "Book.h"
+#include "DBAccess.h"
+#include <vector>
 
 class Student : public User
 {
@@ -13,9 +17,9 @@ private:
     MemberShip* _membership;
 public:
 	bool signUp();
-    bool reserve(Content);
+    bool reserve(Reservation);
 	void returnReservation(Reservation);
-	Reservation* getReservations();
+    vector<Reservation> getReservations(ReservationFilter);
 	bool renewMembership();
 	UserType getUserType();
 	//Cac phuong thuc khoi tao, huy

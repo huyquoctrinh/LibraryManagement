@@ -472,14 +472,14 @@
        <item>
         <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0,0,0">
          <item row="0" column="1">
-          <widget class="QDateEdit" name="edtDateStart"/>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>Start Date</string>
+          <widget class="QDateEdit" name="edtDateStart">
+           <property name="enabled">
+            <bool>false</bool>
            </property>
           </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QDateEdit" name="edtDateReturned"/>
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="label_12">
@@ -488,20 +488,37 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1" colspan="2">
+         <item row="2" column="3">
+          <widget class="QPushButton" name="btnCancel">
+           <property name="text">
+            <string>Cancel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Start Date</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
           <widget class="QPushButton" name="btnReserve">
            <property name="text">
             <string>Complete Reservation</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="3">
-          <widget class="QDateEdit" name="edtDateReturned"/>
-         </item>
-         <item row="1" column="3">
-          <widget class="QPushButton" name="btnCancel">
+         <item row="1" column="0" colspan="4">
+          <widget class="QLabel" name="lblSttReserve">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
            <property name="text">
-            <string>Cancel</string>
+            <string>Borrowed item must be returned within 30 days of the Start Date.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>

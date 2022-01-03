@@ -16,13 +16,16 @@ SOURCES += \
     Book.cpp \
     BookParser.cpp \
     Content.cpp \
+    DBAccess.cpp \
     DateTime.cpp \
-    Library.cpp \
+    LibMS.cpp \
     MemberShip.cpp \
     Premium.cpp \
     Reading.cpp \
     Reservation.cpp \
     ReservationData.cpp \
+    ReservationFilter.cpp \
+    SearchingFilter.cpp \
     Staff.cpp \
     StaffParser.cpp \
     Student.cpp \
@@ -52,13 +55,16 @@ HEADERS += \
     BookParser.h \
     Content.h \
     ContentParser.h \
+    DBAccess.h \
     DateTime.h \
-    Library.h \
+    LibMS.h \
     MemberShip.h \
     Premium.h \
     Reading.h \
     Reservation.h \
     ReservationData.h \
+    ReservationFilter.h \
+    SearchingFilter.h \
     Staff.h \
     StaffParser.h \
     Student.h \

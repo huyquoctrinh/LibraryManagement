@@ -6,15 +6,8 @@ BorrowedWidget::BorrowedWidget(QWidget *parent) :
     ui(new Ui::BorrowedWidget)
 {
     ui->setupUi(this);
-    QVector<Reading> results;
-    results << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
-            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
-            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
-            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
-            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
-            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999)
-            << Reading("12", catBook, sttAvailable, 10, 20, "Harry Potter", "J.K Rowling", 1999);
-    displayContentResults(results);
+
+    //displayContentResults(results);
 }
 
 BorrowedWidget::~BorrowedWidget()
@@ -35,9 +28,27 @@ void addReadingItem(Reading reading, Ui::BorrowedWidget* ui)
     ui->listWidget->setItemWidget (listWidgetItem, theWidgetItem);
 }
 
-void BorrowedWidget::displayContentResults(QVector<Reading> results)
+void BorrowedWidget::displayContentResults()
 {
-    for (int i = 0; i < results.size(); i++) {
+    /*for (int i = 0; i < results.size(); i++) {
         addReadingItem(results[i], ui);
-    }
+    }*/
 }
+
+void BorrowedWidget::on_btnFilter_clicked()
+{
+    LibMS* libms = LibMS::getInstance();
+    User* currentUser = libms->getCurrentUser();
+    ReservationFilter filter(ui->chbReturned->isChecked(), ui->chbBorrowing->isChecked());
+    vector<Reservation> resVec;
+    if (currentUser->getUserType() == uStudent) {
+        Student* student = dynamic_cast<Student*>(currentUser);
+        resVec = student->getReservations(filter);
+    }
+    else
+    {
+
+    }
+
+}
+

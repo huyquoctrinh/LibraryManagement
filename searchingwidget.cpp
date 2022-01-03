@@ -35,41 +35,57 @@ void SearchingWidget::displayContentResults(QVector<Reading*> results)
     }
 }
 
-void SearchingWidget::setCurrentUser(User * user)
-{
-    _currentUser = user;
-}
-
-
 void SearchingWidget::on_listWidget_currentRowChanged(int currentRow)
 {
+    LibMS::getInstance()->setViewingReading(_results[currentRow]);
     contentDetailsDialog = new ContentDetailsDialog;
     contentDetailsDialog->setModal(true);
-    contentDetailsDialog->setInfo(_results[currentRow], _currentUser);
     contentDetailsDialog->show();
 }
 
 void SearchingWidget::on_btnSearch_clicked()
 {
-    vector<string> filter(9, ""); // Filter [Book, AcademicJournal, Art, Biography, Economics, Math, Philosophy, Textbook, Science]
-    if (ui->chbBook->isChecked()) filter[0] = "Book";
-    if (ui->chbJournal->isChecked()) filter[1] = "AcademicJournal";
+    vector<Category> categories;
+    vector<string> bookGenres;
+    if (ui->chbBook->isChecked()) categories.push_back(catBook);
+    if (ui->chbJournal->isChecked()) categories.push_back(catAcademicJournal);
+    else if (!ui->chbJournal->isChecked() && !ui->chbBook->isChecked())
+        categories = { catBook, catAcademicJournal };
     if (ui->chbBook->isChecked() || !(ui->chbBook->isChecked() ^ ui->chbJournal->isChecked())) {
-        if (ui->chbArt->isChecked()) filter[2] = "Art";
-        if (ui->chbBiography->isChecked()) filter[3] = "Biography";
-        if (ui->chbEconomics->isChecked()) filter[4] = "Economics";
-        if (ui->chbMath->isChecked()) filter[5] = "Math";
-        if (ui->chbPhilo->isChecked()) filter[6] = "Philosophy";
-        if (ui->chbTextbook->isChecked()) filter[7] = "Textbook";
-        if (ui->chbScience->isChecked()) filter[8] = "Science";
+        int countGenres = 0;
+        if (ui->chbArt->isChecked()) bookGenres.push_back("Art");
+        else countGenres++;
+        if (ui->chbBiography->isChecked()) bookGenres.push_back("Biography");
+        else countGenres++;
+        if (ui->chbEconomics->isChecked()) bookGenres.push_back("Economics");
+        else countGenres++;
+        if (ui->chbMath->isChecked()) bookGenres.push_back("Math");
+        else countGenres++;
+        if (ui->chbPhilo->isChecked()) bookGenres.push_back("Philosophy");
+        else countGenres++;
+        if (ui->chbTextbook->isChecked()) bookGenres.push_back("Textbook");
+        else countGenres++;
+        if (ui->chbScience->isChecked()) bookGenres.push_back("Science");
+        else countGenres++;
+        if (countGenres == 7)
+            bookGenres = { "Book", "AcademicJournal", "Art", "Biography", "Economics", "Math", "Philosophy", "Textbook", "Science"};
     }
-
+    SearchingFilter filter(categories, bookGenres);
+    DBAccess* dbaccess = DBAccess::getInstance();
     vector<Reading*> resVec;
     if (ui->cbbSearchBy->currentText() == "Title") {
-        resVec = Library::searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
+        //resVec = dbaccess->getContentDB->searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
+        resVec ={   new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+                    new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+                    new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+                    new AcademicJournal("11", sttUnavailable, 0, 12, "Journal 1", "Author Tri", 2020, 1, "2525", "Science")};
     }
     else {
-        resVec = Library::searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
+        //resVec = dbaccess->getContentDB.searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
+        resVec ={   new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+                    new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+                    new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+                    new AcademicJournal("11", sttUnavailable, 0, 12, "Journal 1", "Author Tri", 2020, 1, "2525", "Science")};
     }
     _results = QVector<Reading*>(resVec.begin(), resVec.end());
     displayContentResults(_results);

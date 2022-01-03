@@ -8,7 +8,7 @@ class Reservation
 private:
 	DateTime _startTime;
 	DateTime _expiredTime;
-	Content _content;
+    Content* _content;
     User* _borrower;
 public:
 	bool isExpired();
@@ -17,16 +17,16 @@ public:
 public:
 	DateTime getStartTime();
 	DateTime getExpiredTime();
-	Content getContent();
+    Content* getContent();
     User* getBorrower();
 
 	//Cac setter
 	void setStartTime(DateTime);
 	void setExpiredTime(DateTime);
-	void setContent(Content);
+    void setContent(Content*);
     void setBorrower(User*);
 	//Cac phuong thuc khoi tao, huy
 public:
 	Reservation();
-    Reservation(DateTime start, DateTime expire, Content content, User* borrower);
+    Reservation(DateTime start, DateTime expire, Content* content, User* borrower);
 };

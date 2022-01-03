@@ -8,6 +8,12 @@
 #include "AcademicJournal.h"
 #include "User.h"
 #include "Student.h"
+#include "Reservation.h"
+#include "LibMS.h"
+
+#define ERROR_OUT_OF_DAYS "Borrowed item must be returned within 30 days of the Start Date."
+#define ERROR_FAILED "Cannot complete your reservation. Please contact the staff for more information."
+#define SUCCESS_RESERVATION "Successfully reserve!"
 
 namespace Ui {
 class ContentDetailsDialog;
@@ -22,8 +28,7 @@ public:
     ~ContentDetailsDialog();
 
 public:
-    void setInfo(Reading* reading, User*);
-    void setUsertype(QString usertype);
+    void setInfo();
 
 private slots:
     void on_btnCancel_clicked();
@@ -32,10 +37,10 @@ private slots:
 
     void on_btnBorrow_clicked();
 
+    void on_edtDateReturned_userDateChanged(const QDate &date);
+
 private:
     Ui::ContentDetailsDialog *ui;
-    User* _currentUser;
-    Reading* _currentReading;
 };
 
 #endif // CONTENTDETAILSDIALOG_H

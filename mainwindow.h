@@ -16,6 +16,8 @@
 #include "regulationwidget.h"
 #include "modifycontentwidget.h"
 #include "modifyuserwidget.h"
+#include "LibMS.h"
+#include "DBAccess.h"
 
 #include "logindialog.h"
 #include "User.h"
@@ -49,9 +51,6 @@ private:
     ModifyUserWidget* modifyUserWidget;
 
     LoginDialog* loginDialog = NULL;
-
-public:
-    User* _currentUser;
 
 private:
     void addMenuItem(QVector<QString>, QVector<QString>);

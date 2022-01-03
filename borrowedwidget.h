@@ -2,8 +2,13 @@
 #define BORROWEDWIDGET_H
 
 #include <QWidget>
-#include "reading.h"
+#include "Reading.h"
 #include "borroweditemwidget.h"
+#include "User.h"
+#include "Reservation.h"
+#include "ReservationData.h"
+#include "LibMS.h"
+#include "ReservationFilter.h"
 
 namespace Ui {
 class BorrowedWidget;
@@ -19,10 +24,15 @@ public:
 
 private:
     Ui::BorrowedWidget *ui;
+    QVector<Reservation> _result;
+    User* _currentUser;
 
 public:
-    void displayContentResults(QVector<Reading> results);
+    void displayContentResults();
+    void setCurrentUser(User* user);
 
+private slots:
+    void on_btnFilter_clicked();
 };
 
 #endif // BORROWEDWIDGET_H
