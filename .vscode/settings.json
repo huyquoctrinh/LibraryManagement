@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "iterator": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
+}
