@@ -23,16 +23,16 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QCheckBox" name="chbReturned">
+         <widget class="QCheckBox" name="chbUnexpired">
           <property name="text">
-           <string>Returned</string>
+           <string>Unexpired</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="chbBorrowing">
+         <widget class="QCheckBox" name="chbExpired">
           <property name="text">
-           <string>Borrowing</string>
+           <string>Expired</string>
           </property>
          </widget>
         </item>

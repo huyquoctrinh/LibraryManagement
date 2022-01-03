@@ -65,14 +65,18 @@
      <item row="1" column="1">
       <widget class="QPushButton" name="pushButton_2">
        <property name="text">
-        <string>Deactivate account</string>
+        <string>Update</string>
        </property>
       </widget>
      </item>
      <item row="0" column="0" colspan="2">
       <layout class="QGridLayout" name="gridLayout">
        <item row="2" column="1">
-        <widget class="QLineEdit" name="txtDateOfBirth"/>
+        <widget class="QLineEdit" name="txtDateOfBirth">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_2">
@@ -82,7 +86,11 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="txtName"/>
+        <widget class="QLineEdit" name="txtName">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_3">
@@ -93,6 +101,9 @@
        </item>
        <item row="5" column="1">
         <widget class="QGroupBox" name="groupBox_2">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="title">
           <string/>
          </property>
@@ -115,7 +126,11 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="txtUni"/>
+        <widget class="QLineEdit" name="txtUni">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_4">
@@ -133,6 +148,9 @@
        </item>
        <item row="1" column="1">
         <widget class="QGroupBox" name="groupBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="title">
           <string/>
          </property>
@@ -155,7 +173,11 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QLineEdit" name="txtSID"/>
+        <widget class="QLineEdit" name="txtSID">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_8">

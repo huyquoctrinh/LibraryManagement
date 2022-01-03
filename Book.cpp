@@ -39,7 +39,15 @@ Book::Book(string id, Status status, int availCount, int totalCount, string titl
 {
 	_publisher = publisher;
 	_ISBN = ISBN;
-	_genre = genre;
+    _genre = genre;
+}
+
+Book::Book(Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre)
+    : Reading("0", catBook, status, availCount, totalCount, title, authors, publicYear)
+{
+    _publisher = publisher;
+    _ISBN = ISBN;
+    _genre = genre;
 }
 
 Book::~Book()

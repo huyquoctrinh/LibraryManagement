@@ -49,39 +49,29 @@ void SearchingWidget::on_btnSearch_clicked()
     vector<string> bookGenres;
     if (ui->chbBook->isChecked()) categories.push_back(catBook);
     if (ui->chbJournal->isChecked()) categories.push_back(catAcademicJournal);
-    else if (!ui->chbJournal->isChecked() && !ui->chbBook->isChecked())
-        categories = { catBook, catAcademicJournal };
-    if (ui->chbBook->isChecked() || !(ui->chbBook->isChecked() ^ ui->chbJournal->isChecked())) {
-        int countGenres = 0;
+
+    if (ui->chbBook->isChecked()) {
         if (ui->chbArt->isChecked()) bookGenres.push_back("Art");
-        else countGenres++;
         if (ui->chbBiography->isChecked()) bookGenres.push_back("Biography");
-        else countGenres++;
         if (ui->chbEconomics->isChecked()) bookGenres.push_back("Economics");
-        else countGenres++;
         if (ui->chbMath->isChecked()) bookGenres.push_back("Math");
-        else countGenres++;
         if (ui->chbPhilo->isChecked()) bookGenres.push_back("Philosophy");
-        else countGenres++;
         if (ui->chbTextbook->isChecked()) bookGenres.push_back("Textbook");
-        else countGenres++;
         if (ui->chbScience->isChecked()) bookGenres.push_back("Science");
-        else countGenres++;
-        if (countGenres == 7)
-            bookGenres = { "Book", "AcademicJournal", "Art", "Biography", "Economics", "Math", "Philosophy", "Textbook", "Science"};
     }
+
     SearchingFilter filter(categories, bookGenres);
     DBAccess* dbaccess = DBAccess::getInstance();
     vector<Reading*> resVec;
     if (ui->cbbSearchBy->currentText() == "Title") {
-        //resVec = dbaccess->getContentDB->searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
+        //resVec = dbaccess->getContentDB().searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
         resVec ={   new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new AcademicJournal("11", sttUnavailable, 0, 12, "Journal 1", "Author Tri", 2020, 1, "2525", "Science")};
     }
     else {
-        //resVec = dbaccess->getContentDB.searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
+        //resVec = dbaccess->getContentDB().searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
         resVec ={   new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
@@ -114,6 +104,21 @@ void SearchingWidget::on_chbBook_stateChanged(int arg1)
     if (!ui->chbJournal->isChecked() && !ui->chbBook->isChecked()) {
         ui->grbGenre->setEnabled(true);
     }
-
 }
 
+void SearchingWidget::on_btnAllCategory_clicked()
+{
+    ui->chbBook->setChecked(true);
+    ui->chbJournal->setChecked(true);
+}
+
+void SearchingWidget::on_btnAllGenre_clicked()
+{
+    ui->chbArt->setChecked(true);
+    ui->chbBiography->setChecked(true);
+    ui->chbEconomics->setChecked(true);
+    ui->chbMath->setChecked(true);
+    ui->chbPhilo->setChecked(true);
+    ui->chbScience->setChecked(true);
+    ui->chbTextbook->setChecked(true);
+}

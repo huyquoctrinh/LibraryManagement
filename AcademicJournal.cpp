@@ -39,8 +39,17 @@ AcademicJournal::AcademicJournal(string id, Status status, int availCount, int t
 {
 	_volume = volume;
 	_ISSN = ISSN;
-	_subject = subject;
+    _subject = subject;
 }
+
+AcademicJournal::AcademicJournal(Status status, int availCount, int totalCount, string title, string authors, int publicYear, int volume, string ISSN, string subject)
+    : Reading("0", catAcademicJournal, status, availCount, totalCount, title, authors, publicYear)
+{
+    _volume = volume;
+    _ISSN = ISSN;
+    _subject = subject;
+}
+
 
 AcademicJournal::~AcademicJournal()
 {

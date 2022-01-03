@@ -44,38 +44,42 @@ bool User::deactivate()
 
 string User::getId() const
 {
-	return string();
+    return _id;
 }
 
 string User::getName() const
 {
-	return string();
+    return _name;
 }
 
 DateTime User::getDateOfBirth() const
 {
-	return DateTime();
+    return _dateOfBirth;
 }
 
 Account User::getAccount() const
 {
-	return Account();
+    return _account;
 }
 
-void User::setId(string)
+void User::setId(string id)
 {
+    _id = id;
 }
 
-void User::setName(string)
+void User::setName(string name)
 {
+    _name = name;
 }
 
-void User::setDateOfBirth(DateTime)
+void User::setDateOfBirth(DateTime dateOfBirth)
 {
+    _dateOfBirth = dateOfBirth;
 }
 
-void User::setAccount(Account)
+void User::setAccount(Account account)
 {
+    _account = account;
 }
 
 string toValue(UserType type)

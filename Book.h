@@ -25,6 +25,6 @@ public:
 public:
 	Book();
     Book(string id, Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre);
-
+    Book(Status status, int availCount, int totalCount, string title, string authors, int publicYear, string publisher, string ISBN, string genre);
 	virtual ~Book();
 };

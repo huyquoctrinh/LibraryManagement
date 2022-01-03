@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>933</width>
-    <height>548</height>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -69,9 +69,22 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QPushButton" name="btnAllCategory">
+        <property name="text">
+         <string>Choose All</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="chbBook">
         <property name="text">
          <string>Book</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="tristate">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -79,6 +92,9 @@
        <widget class="QCheckBox" name="chbJournal">
         <property name="text">
          <string>Academic Journal</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -92,9 +108,19 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
+       <widget class="QPushButton" name="btnAllGenre">
+        <property name="text">
+         <string>Choose All</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="chbArt">
         <property name="text">
          <string>Art/Architecture</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -103,12 +129,18 @@
         <property name="text">
          <string>Biography</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="chbEconomics">
         <property name="text">
          <string>Economics</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -117,12 +149,18 @@
         <property name="text">
          <string>Math</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="chbPhilo">
         <property name="text">
          <string>Philosophy</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -131,12 +169,18 @@
         <property name="text">
          <string>Textbook</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="chbScience">
         <property name="text">
          <string>Science</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

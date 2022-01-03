@@ -72,7 +72,6 @@ void LoginDialog::on_btnLogin_clicked()
 
     Account loginAccount(username, password);
     User* loginUser = LibMS::getInstance()->signIn(loginAccount);
-
     if (loginUser == NULL)  // Failed to login
     {
         ui->lblFailedLogin->setVisible(true);

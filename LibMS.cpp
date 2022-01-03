@@ -7,6 +7,7 @@ Reading *LibMS::getViewingReading() const
 
 void LibMS::setViewingReading(Reading *newViewingReading)
 {
+    delete _viewingReading;
     _viewingReading = newViewingReading;
 }
 
@@ -40,27 +41,29 @@ User *LibMS::signIn(Account account)
     // Return: User* if succeed, NULL if not.
     if (true) {
         // Example login as student
+        /*
         string name = "Lê Quang Trí";
         bool gender = false;
         DateTime dateOfBirth(3, 1, 2002);
         DateTime renewalDate(30, 1, 2022);
         University uni = toKey("HCMUS");
         string sid = "20120022";
-        MemberShip* membership = new Basic();
+        MemberShip* membership = new Premium();
         Student* newStudent = new Student(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
         newStudent->setId("11523");
-        // Set current user for this instance
+        // Update current user for this instance
         _currentUser = newStudent;
         return newStudent;
+        */
 
 
-        /*
         // Example login as staff
         string name = "Lê Quang Trí";
         bool gender = false;
         DateTime dateOfBirth(3, 1, 2002);
         Staff* loginStaff = new Staff(name, dateOfBirth, gender, account);
-        return loginStaff;*/
+        _currentUser = loginStaff;
+        return loginStaff;
     }
     _currentUser = NULL;
     return NULL; // Failed to sign in
@@ -77,8 +80,8 @@ bool LibMS::signUp(Student* newStudent)
 {
     // Sign up with newStudent's info
     // Return: true if success, false if not.
-    DBAccess* dbaccess = DBAcess::getInstance();
-    dbaccess->getUserDB()->signIn(newStudent->getAccount().getUsername(), newStudent->getAccount().getPassword());
+    DBAccess* dbaccess = DBAccess::getInstance();
+    //dbaccess->getUserDB()->signIn(newStudent->getAccount().getUsername(), newStudent->getAccount().getPassword());
     return true;
 }
 
@@ -114,14 +117,3 @@ vector<Reading *> LibMS::searchReadingByTitle(string title, vector<string> filte
     // In Ex3, get the results in category Book OR AcademicJournal. For Book results, just get those have Art genre.
 }
 */
-
-
-const ReservationData &LibMS::getReservationDB() const
-{
-    return _reservationDB;
-}
-
-void LibMS::setReservationDB(const ReservationData &newReservationDB)
-{
-    _reservationDB = newReservationDB;
-}

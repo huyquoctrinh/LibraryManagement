@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QDebug>
 #include "Reading.h"
+#include "Reservation.h"
+#include "Student.h"
+#include "LibMS.h"
 
 namespace Ui {
 class BorrowedItemWidget;
@@ -19,11 +22,13 @@ public:
 
 private:
     Ui::BorrowedItemWidget *ui;
+    Reservation _reservation;
 
 public:
-    void setContent(QString title, QString category, QString authors, bool isReturned);
+    void setContent(Reservation);
 private slots:
     void on_label_4_linkActivated(const QString &link);
+    void on_btnReturn_clicked();
 };
 
 #endif // BORROWEDITEMWIDGET_H

@@ -16,13 +16,12 @@ private:
 	DateTime _renewalDate;
     MemberShip* _membership;
 public:
-	bool signUp();
     bool reserve(Reservation);
 	void returnReservation(Reservation);
-    vector<Reservation> getReservations(ReservationFilter);
+    vector<Reservation> getReservations(ReservationFilter filter);
 	bool renewMembership();
 	UserType getUserType();
-	//Cac phuong thuc khoi tao, huy
+
 public:
     Student();
     Student(string name, DateTime dateOfBirth, bool gender, Account account, string studentId, University uni, DateTime renewDate, MemberShip* membership);
@@ -42,3 +41,4 @@ public:
 };
 
 University toKey(string str);
+string toValue(University uni);

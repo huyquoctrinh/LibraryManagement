@@ -12,7 +12,7 @@ void DBAccess::setReservationDB(const ReservationData &newReservationDB)
 
 DBAccess::DBAccess()
 {
-    _userDB = UserData("abc.db");
+
 }
 
 DBAccess *DBAccess::getInstance()

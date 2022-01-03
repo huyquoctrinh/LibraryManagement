@@ -1,5 +1,15 @@
 #include "Reservation.h"
 
+bool Reservation::isReturned() const
+{
+    return _isReturned;
+}
+
+void Reservation::setIsReturned(bool newIsReturned)
+{
+    _isReturned = newIsReturned;
+}
+
 bool Reservation::isExpired()
 {
 	return false;
@@ -54,10 +64,11 @@ Reservation::Reservation()
 {
 }
 
-Reservation::Reservation(DateTime start, DateTime expire, Content* content, User* borrower)
+Reservation::Reservation(DateTime start, DateTime expire, Content* content, User* borrower, bool isReturned)
 {
 	_startTime = start;
 	_expiredTime = expire;
 	_content = content;
 	_borrower = borrower;
+    _isReturned = isReturned;
 }

@@ -2,6 +2,7 @@
 #define BORROWEDWIDGET_H
 
 #include <QWidget>
+#include <QDebug>
 #include "Reading.h"
 #include "borroweditemwidget.h"
 #include "User.h"
@@ -28,7 +29,7 @@ private:
     User* _currentUser;
 
 public:
-    void displayContentResults();
+    void displayContentResults(vector<Reservation>);
     void setCurrentUser(User* user);
 
 private slots:

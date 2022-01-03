@@ -42,6 +42,8 @@ private slots:
     void on_chbJournal_stateChanged(int arg1);
     void on_chbBook_stateChanged(int arg1);
 
+    void on_btnAllCategory_clicked();
+    void on_btnAllGenre_clicked();
 };
 
 

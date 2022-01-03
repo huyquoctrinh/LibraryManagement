@@ -63,7 +63,7 @@ void ContentDetailsDialog::on_btnReserve_clicked()
     Student* student = dynamic_cast<Student*>(_currentUser);
     DateTime startDate(ui->edtDateStart->date().day(), ui->edtDateStart->date().month(), ui->edtDateStart->date().year());
     DateTime expiredDate(ui->edtDateReturned->date().day(), ui->edtDateReturned->date().month(), ui->edtDateReturned->date().year());
-    Reservation newReservation(startDate, expiredDate, _currentReading, _currentUser);
+    Reservation newReservation(startDate, expiredDate, _currentReading, _currentUser, false);
     bool result = student->reserve(newReservation);
     if (result) // Successfully reserve
     {

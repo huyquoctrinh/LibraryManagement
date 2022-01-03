@@ -1,10 +1,5 @@
 #include "Student.h"
 
-bool Student::signUp()
-{
-	return false;
-}
-
 bool Student::reserve(Reservation reservation)
 {
     // Reserve a content
@@ -14,19 +9,20 @@ bool Student::reserve(Reservation reservation)
     return true;
 }
 
-void Student::returnReservation(Reservation)
+void Student::returnReservation(Reservation reservation)
 {
+    DBAccess* dbaccess = DBAccess::getInstance();
+    ReservationData reservationDb = dbaccess->getReservationDB();
+    // Update reservation
+    reservation.setIsReturned(true);
+    reservationDb.updateReservation(reservation);
 }
 
-vector<Reservation> Student::getReservations(ReservationFilter)
+vector<Reservation> Student::getReservations(ReservationFilter filter)
 {
-    vector<Reservation> res = {
-        Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), this),
-        Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), this),
-        Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), this)
-    };
     DBAccess* dbaccess = DBAccess::getInstance();
-    res = dbaccess->getReservationDB().read
+    ReservationData d = dbaccess->getReservationDB();
+    vector<Reservation> res = d.readUserReservations(this, filter);
     return res;
 }
 
@@ -107,4 +103,14 @@ University toKey(string str) {
     if (str == "IU")
         return IU;
     return HCMUS;
+}
+
+string toValue(University uni)
+{
+    switch (uni) {
+        case USSH: return "USSH";
+        case HCMUT: return "HCMUT";
+        case IU: return "IU";
+    }
+    return "HCMUS";
 }

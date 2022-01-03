@@ -25,6 +25,7 @@ public:
 public:
 	AcademicJournal();
     AcademicJournal(string id, Status status, int availCount, int totalCount, string title, string authors, int publicYear, int volume, string ISSN, string subject);
+    AcademicJournal(Status status, int availCount, int totalCount, string title, string authors, int publicYear, int volume, string ISSN, string subject);
 
 	virtual ~AcademicJournal();
 };

@@ -15,31 +15,31 @@ BorrowedWidget::~BorrowedWidget()
     delete ui;
 }
 
-void addReadingItem(Reading reading, Ui::BorrowedWidget* ui)
+void addReadingItem(Reservation reservation, Ui::BorrowedWidget* ui)
 {
+
     QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->listWidget);
     ui->listWidget->addItem (listWidgetItem);
     BorrowedItemWidget *theWidgetItem = new BorrowedItemWidget;
-    QString title = QString::fromStdString(reading.getTitle());
-    QString category = QString::fromStdString(ToValue(reading.getCategory()));
-    QString authors = QString::fromStdString(reading.getAuthors());
-    theWidgetItem->setContent(title, category, authors, true);
+
+    theWidgetItem->setContent(reservation);
     listWidgetItem->setSizeHint (theWidgetItem->sizeHint());
     ui->listWidget->setItemWidget (listWidgetItem, theWidgetItem);
 }
 
-void BorrowedWidget::displayContentResults()
+void BorrowedWidget::displayContentResults(vector<Reservation> results)
 {
-    /*for (int i = 0; i < results.size(); i++) {
+    for (int i = 0; i < results.size(); i++) {
         addReadingItem(results[i], ui);
-    }*/
+    }
 }
 
 void BorrowedWidget::on_btnFilter_clicked()
 {
     LibMS* libms = LibMS::getInstance();
     User* currentUser = libms->getCurrentUser();
-    ReservationFilter filter(ui->chbReturned->isChecked(), ui->chbBorrowing->isChecked());
+    qInfo() << QString::fromStdString(currentUser->getName());
+    ReservationFilter filter(ui->chbExpired->isChecked(), ui->chbUnexpired->isChecked());
     vector<Reservation> resVec;
     if (currentUser->getUserType() == uStudent) {
         Student* student = dynamic_cast<Student*>(currentUser);
@@ -47,8 +47,9 @@ void BorrowedWidget::on_btnFilter_clicked()
     }
     else
     {
-
+        Staff* staff = dynamic_cast<Staff*>(currentUser);
+        resVec = staff->getAllReservations(filter);
     }
-
+    displayContentResults(resVec);
 }
 

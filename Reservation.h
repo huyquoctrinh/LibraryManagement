@@ -10,6 +10,7 @@ private:
 	DateTime _expiredTime;
     Content* _content;
     User* _borrower;
+    bool _isReturned;
 public:
 	bool isExpired();
 	int getTimeLeft();
@@ -28,5 +29,7 @@ public:
 	//Cac phuong thuc khoi tao, huy
 public:
 	Reservation();
-    Reservation(DateTime start, DateTime expire, Content* content, User* borrower);
+    Reservation(DateTime start, DateTime expire, Content* content, User* borrower, bool isReturned);
+    bool isReturned() const;
+    void setIsReturned(bool newIsReturned);
 };

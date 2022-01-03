@@ -56,6 +56,7 @@ void MainWindow::initStudentMenu()
     searchingWidget = new SearchingWidget;
     borrowedWidget = new BorrowedWidget;
     userInfoWidget = new UserInfoWidget;
+    userInfoWidget->setContent();
     regulationWidget = new RegulationWidget;
     ui->stackedWidget->insertWidget(0, searchingWidget);
     ui->stackedWidget->insertWidget(1, borrowedWidget);
@@ -122,6 +123,7 @@ void MainWindow::receiveLogin(User *currentUser)
         //ui->label->setText("Hello Student, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
     }
     else { // Sign in as staff
+        qInfo() << "Staff login";
         initStaffMenu();
         //ui->label->setText("Hello Staff, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
     }

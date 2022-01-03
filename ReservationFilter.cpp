@@ -1,33 +1,34 @@
 #include "ReservationFilter.h"
 
-bool ReservationFilter::isReturned() const
+
+bool ReservationFilter::isExpired() const
 {
-    return _isReturned;
+    return _isExpired;
 }
 
-void ReservationFilter::setIsReturned(bool newIsReturned)
+void ReservationFilter::setIsExpired(bool newIsExpired)
 {
-    _isReturned = newIsReturned;
+    _isExpired = newIsExpired;
 }
 
-bool ReservationFilter::isBorrowing() const
+bool ReservationFilter::isUnexpired() const
 {
-    return _isBorrowing;
+    return _isUnexpired;
 }
 
-void ReservationFilter::setIsBorrowing(bool newIsBorrowing)
+void ReservationFilter::setIsUnexpired(bool newIsUnexpired)
 {
-    _isBorrowing = newIsBorrowing;
+    _isUnexpired = newIsUnexpired;
 }
 
 ReservationFilter::ReservationFilter()
 {
-    _isReturned = true;
-    _isBorrowing = true;
+    _isExpired = true;
+    _isUnexpired = true;
 }
 
-ReservationFilter::ReservationFilter(bool isReturned, bool isBorrowing)
+ReservationFilter::ReservationFilter(bool isExpired, bool isUnexpired)
 {
-    _isReturned = isReturned;
-    _isBorrowing = isBorrowing;
+    _isExpired = isExpired;
+    _isUnexpired = isUnexpired;
 }

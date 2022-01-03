@@ -1,17 +1,33 @@
 #include "Staff.h"
 
-bool Staff::addContent(Content)
+bool Staff::addContent(Content* newContent)
 {
+    /*
+     * ContentData contentDB = DBAccess::getInstance()->getContentDB();
+     * book addResult = contentDB.addContent(newContent);
+     * return addResult;
+    */
+
 	return false;
 }
 
-bool Staff::updateContent(Content)
+bool Staff::updateContent(Content* updatedContent)
 {
+    /*
+     * ContentData contentDB = DBAccess::getInstance()->getContentDB();
+     * book updateResult = contentDB.updateContent(newContent);
+     * return updateResult;
+    */
 	return false;
 }
 
-bool Staff::removeContent(Content)
+bool Staff::removeContent(Content*)
 {
+    /*
+     * ContentData contentDB = DBAccess::getInstance()->getContentDB();
+     * book removeResult = contentDB.deleteContent(newContent);
+     * return removeResult;
+    */
 	return false;
 }
 
@@ -22,12 +38,15 @@ bool Staff::addStudent(Student)
 
 bool Staff::blockStudent()
 {
-	return false;
+    return false;
 }
 
-ReservationData Staff::getAllReservationData()
+vector<Reservation> Staff::getAllReservations(ReservationFilter filter)
 {
-	return ReservationData();
+    DBAccess* dbaccess = DBAccess::getInstance();
+    ReservationData d = dbaccess->getReservationDB();
+    vector<Reservation> res = d.readAllReservations(filter);
+    return res;
 }
 
 vector<Student> Staff::getStudents()

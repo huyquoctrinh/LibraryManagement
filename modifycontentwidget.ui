@@ -29,15 +29,28 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout_5">
+     <item row="2" column="0">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>206</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item row="0" column="0" colspan="3">
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="txtPubYear"/>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="txtAuthor"/>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_3">
@@ -54,7 +67,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="txtTitle"/>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_2">
@@ -85,14 +98,14 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QRadioButton" name="radioButton">
+           <widget class="QRadioButton" name="rdbBook">
             <property name="text">
              <string>Book</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_2">
+           <widget class="QRadioButton" name="rdbJournal">
             <property name="text">
              <string>Academic Journal</string>
             </property>
@@ -111,7 +124,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QLineEdit" name="txtPublisher"/>
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="label_7">
@@ -121,7 +134,7 @@
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_7"/>
+          <widget class="QLineEdit" name="txtVolume"/>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_5">
@@ -131,7 +144,7 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QLineEdit" name="txtISBN"/>
          </item>
          <item row="1" column="2">
           <widget class="QLabel" name="label_9">
@@ -141,7 +154,7 @@
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineEdit_8"/>
+          <widget class="QLineEdit" name="txtISSN"/>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_6">
@@ -149,9 +162,6 @@
             <string>Genre</string>
            </property>
           </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_6"/>
          </item>
          <item row="2" column="2">
           <widget class="QLabel" name="label_8">
@@ -161,7 +171,46 @@
           </widget>
          </item>
          <item row="2" column="3">
-          <widget class="QLineEdit" name="lineEdit_9"/>
+          <widget class="QLineEdit" name="txtSubject"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="cbbGenre">
+           <item>
+            <property name="text">
+             <string>Art</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Biography</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Economics</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Math</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Philosophy</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Textbook</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Science</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </item>
@@ -174,9 +223,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_10"/>
-         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_11">
            <property name="text">
@@ -185,7 +231,7 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_11"/>
+          <widget class="QLineEdit" name="txtAvaiCount"/>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_12">
@@ -195,7 +241,21 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_12"/>
+          <widget class="QLineEdit" name="txtTotalCount"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="cbbStatus">
+           <item>
+            <property name="text">
+             <string>Available</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Unavailable</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </item>
@@ -214,8 +274,8 @@
        </item>
       </layout>
      </item>
-     <item row="1" column="0">
-      <spacer name="horizontalSpacer_3">
+     <item row="2" column="2">
+      <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -227,33 +287,12 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btnSearch">
          <property name="text">
           <string>Search</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="text">
-          <string>Create</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>Remove</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>Update</string>
          </property>
         </widget>
        </item>
@@ -268,7 +307,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="cbbFilter">
          <item>
           <property name="text">
            <string>ISBN</string>
@@ -281,20 +320,51 @@
          </item>
         </widget>
        </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnAdd">
+         <property name="text">
+          <string>Add</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnRemove">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnUpdate">
+         <property name="text">
+          <string>Update</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
-     <item row="1" column="2">
-      <spacer name="horizontalSpacer_4">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+     <item row="1" column="1">
+      <widget class="QLabel" name="lblStt">
+       <property name="text">
+        <string>TextLabel</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>206</width>
-         <height>20</height>
-        </size>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
-      </spacer>
+      </widget>
      </item>
     </layout>
    </item>

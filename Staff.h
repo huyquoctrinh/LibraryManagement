@@ -3,18 +3,19 @@
 #include "User.h"
 #include "Student.h"
 #include "UniversityEnum.h"
-#include "ReservationData.h"
+#include "DBAccess.h"
+#include "ReservationFilter.h"
 
 class Staff : public User
 {
 private:
 public:
-	bool addContent(Content);
-	bool updateContent(Content);
-	bool removeContent(Content);
+    bool addContent(Content*);
+    bool updateContent(Content*);
+    bool removeContent(Content*);
 	bool addStudent(Student);
 	bool blockStudent();
-	ReservationData getAllReservationData();
+    vector<Reservation> getAllReservations(ReservationFilter);
     vector<Student> getStudents();
 	UserType getUserType();
 	//Phuong thuc khoi tao, huy
