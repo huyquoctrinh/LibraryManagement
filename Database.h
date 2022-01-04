@@ -49,7 +49,16 @@ class Database{
                 out<<endl;
             }
         }
+
         void updateRecord(vector<string> data){
+            vector<vector<string>> tmp = this->getRecord();
+            string idx = data[0];
+            int id = stoi(idx);
+            tmp[id-1] = data;
+            this->createRecord(tmp);
+        }
+
+        void addRecord(vector<string> data){
             vector<vector<string>> tmp = this->getRecord();
             tmp.push_back(data);
             ofstream out(this->databaseName);
@@ -60,9 +69,30 @@ class Database{
                 out<<endl;
             }
         }
-        void deleteRecord(){
+        static bool compare(vector<string> a1, vector<string> a2){
+			if (a1.size() != a2.size()){
+				return 0;
+			}
+			for (int i=0;i<a1.size();i++){
+				if (a1[i] != a2[i]){
+					return 0;
+				}
+			}
+			return 1;
+		}
+
+        void deleteRecord(vector<string> input_vector){
             vector<vector<string>> data = this->getRecord();
-            
+            vector<vector<string>> res;
+            for (auto row:data){
+                if (compare(row, input_vector)){
+                    continue;
+                }
+                else{
+                    res.push_back(row);
+                }
+            }
+            this->createRecord(res);
         }
 
 };

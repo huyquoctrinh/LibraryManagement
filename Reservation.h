@@ -36,7 +36,7 @@ class Reservation{
 			res.push_back(to_string(2));
 			res.push_back(this->_borrower->getId());
 			return res;
-		}
+		};
 		void print(){
 			cout<<this->_id<<" "<<this->_startTime.To_String()<<" "<<this->_expiredTime.To_String()<<" "<<this->_borrower->getId()<<endl;
 		}
@@ -51,6 +51,11 @@ class ReservationData:public Database{
 		}
 		bool createReservation(){
 			createRecord(this->reservationData);
+			return 1;
+		}
+		bool addReservation(Reservation p){
+			vector<string> tmp = p.getReserve();
+			this->updateRecord(tmp);
 			return 1;
 		}
 		vector<vector<string>> getAllData(){
@@ -74,6 +79,7 @@ class ReservationData:public Database{
 		bool updateReservation(Reservation a){
 			vector<string> reserve  = a.getReserve();
 			this->updateRecord(reserve);
+			this->reservationData = getRecord();
 			return 1;
 		}
 
@@ -102,6 +108,7 @@ class ReservationData:public Database{
 					tmp.push_back(row);
 				}
 			} 
+			this->reservationData = getRecord();
 			return check;
 		}
 
