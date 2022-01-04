@@ -10,14 +10,13 @@ private:
 	string _typeName;
 	double _fee;
 public:
-	virtual void getMaxBorrowDate(Content);
+    virtual int getMaxBorrowDate();
 public:
 	//Cac phuong thuc khoi tao, huy
 	MemberShip();
     MemberShip(string typeName, double fee);
     MemberShip(const MemberShip&);
 public:
-	//Cac getter
 	string getTypename();
 	double getFee();
 public:

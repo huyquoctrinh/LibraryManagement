@@ -7,7 +7,7 @@
 class Basic : public MemberShip
 {
 public:
-	void getMaxBorrowDate(Content);
+    int getMaxBorrowDate();
 public:
 	//Cac phuong thuc khoi tao, huy
     Basic();

@@ -10,6 +10,17 @@ void Reservation::setIsReturned(bool newIsReturned)
     _isReturned = newIsReturned;
 }
 
+vector<string> Reservation::getReserve()
+{
+    vector<string> res;
+    res.push_back(this->_id);
+    res.push_back(this->_startTime.toString());
+    res.push_back(this->_expiredTime.toString());
+    res.push_back(to_string(2));
+    res.push_back(this->_borrower->getId());
+    return res;
+}
+
 bool Reservation::isExpired()
 {
 	return false;

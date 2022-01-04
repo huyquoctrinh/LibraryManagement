@@ -2,17 +2,22 @@
 
 const ReservationData &DBAccess::getReservationDB() const
 {
-    return _reservationDB;
+    return *_reservationDB;
 }
 
-void DBAccess::setReservationDB(const ReservationData &newReservationDB)
+const ContentData &DBAccess::getContentDB() const
 {
-    _reservationDB = newReservationDB;
+    return *_contentDB;
+}
+
+const UserData &DBAccess::getUserDB() const
+{
+    return *_userDB;
 }
 
 DBAccess::DBAccess()
 {
-
+    // Construct _reservationDB, _contentDB, _userDB
 }
 
 DBAccess *DBAccess::getInstance()

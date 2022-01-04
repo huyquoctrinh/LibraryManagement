@@ -1,7 +1,8 @@
 #include "Basic.h"
 
-void Basic::getMaxBorrowDate(Content)
+int Basic::getMaxBorrowDate()
 {
+   return 30;
 }
 
 Basic::Basic() : MemberShip(MEMBERSHIP_BASIC, BASIC_FEE)

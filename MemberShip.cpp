@@ -1,7 +1,8 @@
 #include "MemberShip.h"
 
-void MemberShip::getMaxBorrowDate(Content)
+int MemberShip::getMaxBorrowDate()
 {
+    return 0;
 }
 
 MemberShip::MemberShip()

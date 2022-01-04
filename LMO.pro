@@ -16,7 +16,9 @@ SOURCES += \
     Book.cpp \
     BookParser.cpp \
     Content.cpp \
+    ContentData.cpp \
     DBAccess.cpp \
+    Database.cpp \
     DateTime.cpp \
     LibMS.cpp \
     MemberShip.cpp \
@@ -31,6 +33,7 @@ SOURCES += \
     Student.cpp \
     StudentParser.cpp \
     User.cpp \
+    UserData.cpp \
     bookwidgetitem.cpp \
     borroweditemwidget.cpp \
     borrowedwidget.cpp \
@@ -54,8 +57,10 @@ HEADERS += \
     Book.h \
     BookParser.h \
     Content.h \
+    ContentData.h \
     ContentParser.h \
     DBAccess.h \
+    Database.h \
     DateTime.h \
     LibMS.h \
     MemberShip.h \
@@ -72,6 +77,7 @@ HEADERS += \
     TabProxy.h \
     UniversityEnum.h \
     User.h \
+    UserData.h \
     UserParser.h \
     UserTypeEnum.h \
     bookwidgetitem.h \

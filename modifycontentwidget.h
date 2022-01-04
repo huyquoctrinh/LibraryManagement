@@ -22,6 +22,10 @@ private slots:
 
     void on_btnAdd_clicked();
 
+    void on_btnRemove_clicked();
+
+    void on_btnUpdate_clicked();
+
 private:
     Ui::ModifyContentWidget *ui;
 };

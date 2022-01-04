@@ -91,7 +91,10 @@ void ContentDetailsDialog::on_btnBorrow_clicked()
 
 void ContentDetailsDialog::on_edtDateReturned_userDateChanged(const QDate &date)
 {
-    if (date > QDate::currentDate().addDays(30) || date < QDate::currentDate()) {
+    User* user = LibMS::getInstance()->getCurrentUser();
+    Student* student = dynamic_cast<Student*>(user);
+    int maxBorrowDays = student->getMemberShip()->getMaxBorrowDate();
+    if (date > QDate::currentDate().addDays(maxBorrowDays) || date < QDate::currentDate()) {
         ui->lblSttReserve->setText(ERROR_OUT_OF_DAYS);
         ui->lblSttReserve->setStyleSheet("QLabel { color : red; }");
         ui->lblSttReserve->setVisible(true);

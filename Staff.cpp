@@ -2,43 +2,45 @@
 
 bool Staff::addContent(Content* newContent)
 {
-    /*
-     * ContentData contentDB = DBAccess::getInstance()->getContentDB();
-     * book addResult = contentDB.addContent(newContent);
-     * return addResult;
-    */
-
-	return false;
+    ContentData contentDB = DBAccess::getInstance()->getContentDB();
+    bool addResult = contentDB.addContent(newContent);
+    return addResult;
 }
 
 bool Staff::updateContent(Content* updatedContent)
 {
-    /*
-     * ContentData contentDB = DBAccess::getInstance()->getContentDB();
-     * book updateResult = contentDB.updateContent(newContent);
-     * return updateResult;
-    */
-	return false;
+    ContentData contentDB = DBAccess::getInstance()->getContentDB();
+    bool updateResult = contentDB.updateContent(updatedContent);
+    return updateResult;
 }
 
-bool Staff::removeContent(Content*)
+bool Staff::removeContent(Content* content)
 {
-    /*
-     * ContentData contentDB = DBAccess::getInstance()->getContentDB();
-     * book removeResult = contentDB.deleteContent(newContent);
-     * return removeResult;
-    */
-	return false;
+
+    ContentData contentDB = DBAccess::getInstance()->getContentDB();
+    bool removeResult = contentDB.deleteContent(content);
+    return removeResult;
 }
 
-bool Staff::addStudent(Student)
+bool Staff::addStudent(Student* student)
 {
-	return false;
+    UserData userDB = DBAccess::getInstance()->getUserDB();
+    bool addResult = userDB.addStudent(student);
+    return addResult;
 }
 
-bool Staff::blockStudent()
+bool Staff::updateStudent(Student* student)
 {
-    return false;
+    UserData userDB = DBAccess::getInstance()->getUserDB();
+    bool result = userDB.updateStudent(student);
+    return result;
+}
+
+bool Staff::blockStudent(Student* student)
+{
+    UserData userDB = DBAccess::getInstance()->getUserDB();
+    bool result = userDB.deleteStudent(student);
+    return result;
 }
 
 vector<Reservation> Staff::getAllReservations(ReservationFilter filter)

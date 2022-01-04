@@ -2,10 +2,12 @@
 #include "DateTime.h"
 #include "Content.h"
 #include "User.h"
+#include <vector>
 
 class Reservation
 {
 private:
+    string _id;
 	DateTime _startTime;
 	DateTime _expiredTime;
     Content* _content;
@@ -32,4 +34,6 @@ public:
     Reservation(DateTime start, DateTime expire, Content* content, User* borrower, bool isReturned);
     bool isReturned() const;
     void setIsReturned(bool newIsReturned);
+
+    vector<string> getReserve();
 };

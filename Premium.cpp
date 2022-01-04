@@ -1,7 +1,8 @@
 #include "Premium.h"
 
-void Premium::getMaxBorrowDate(Content)
+int Premium::getMaxBorrowDate()
 {
+    return 60;
 }
 
 Premium::Premium() : MemberShip(MEMBERSHIP_PREMIUM, PREMIUM_FEE)

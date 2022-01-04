@@ -1,4 +1,5 @@
 #pragma once
+#include "Database.h"
 #include "Book.h"
 #include "Reservation.h"
 #include "ReservationFilter.h"
@@ -8,13 +9,13 @@
 
 class Student;
 
-class ReservationData
+class ReservationData : public Database
 {
 private:
-	Reservation* _reservations;
-	int _reservationCount;
+    vector<vector<string>> reservationData;
 public:
 	bool createReservation();
+    vector<vector<string>> getAllData();
     vector<Reservation> readAllReservations(ReservationFilter);
     vector<Reservation> readUserReservations(User*, ReservationFilter);
 	bool updateReservation(Reservation);
@@ -22,19 +23,7 @@ public:
 
 public:
 	ReservationData();
-	ReservationData(Reservation* reservations, int reservationCount);
-	ReservationData(const ReservationData&);
-
-	virtual ~ReservationData();
-public:
-	ReservationData& operator=(const ReservationData&);
-public:
-	//Cac getter
-	Reservation* getReservations();
-	int getReservationCount();
-public:
-	//Cac setter
-	void setReservations(Reservation*);
-	void setReservationCount(int);
+    ReservationData(string ReservationDatabase);
+    ReservationData(Reservation* reservations, int reservationCount);
 };
 

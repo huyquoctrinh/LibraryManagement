@@ -35,7 +35,8 @@ Reading::Reading() : Content()
 	_publicationYear = 2000;
 }
 
-Reading::Reading(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear): Content(id, cat, status, availCount, totalCount)
+Reading::Reading(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear)
+    : Content(id, cat, status, availCount, totalCount)
 {
 	_title = title;
 	_authors = authors;

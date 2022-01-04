@@ -20,6 +20,10 @@ LoginDialog::~LoginDialog()
 void LoginDialog::on_btnSignup_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    QDate today = QDate::currentDate();
+    ui->edtRenewalDate->setDate(today.addDays(30));
+    ui->edtRenewalDate->setEnabled(false);
+    ui->rdbBasic->setChecked(true);
 }
 
 
@@ -80,6 +84,18 @@ void LoginDialog::on_btnLogin_clicked()
     {
         emit doLogin(loginUser);
         this->close();
+    }
+}
+
+void LoginDialog::on_rdbBasic_toggled(bool checked)
+{
+    if (checked) {
+        Basic tmp;
+        ui->lblFee->setText(QString::number(tmp.getFee()) + "$");
+    }
+    else {
+        Premium tmp;
+        ui->lblFee->setText(QString::number(tmp.getFee()) + "$");
     }
 }
 

@@ -35,6 +35,8 @@ private slots:
 
     void on_btnLogin_clicked();
 
+    void on_rdbBasic_toggled(bool checked);
+
 signals:
     void doLogin(User* loginUser);
 

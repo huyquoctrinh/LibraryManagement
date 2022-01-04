@@ -11,7 +11,7 @@
 #include "Reservation.h"
 #include "LibMS.h"
 
-#define ERROR_OUT_OF_DAYS "Borrowed item must be returned within 30 days of the Start Date."
+#define ERROR_OUT_OF_DAYS "Borrowed item must be returned within limited days of the Start Date."
 #define ERROR_FAILED "Cannot complete your reservation. Please contact the staff for more information."
 #define SUCCESS_RESERVATION "Successfully reserve!"
 

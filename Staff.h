@@ -13,8 +13,9 @@ public:
     bool addContent(Content*);
     bool updateContent(Content*);
     bool removeContent(Content*);
-	bool addStudent(Student);
-	bool blockStudent();
+    bool addStudent(Student*);
+    bool updateStudent(Student*);
+    bool blockStudent(Student*);
     vector<Reservation> getAllReservations(ReservationFilter);
     vector<Student> getStudents();
 	UserType getUserType();
