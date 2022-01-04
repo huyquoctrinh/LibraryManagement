@@ -1,6 +1,13 @@
 # Library Management System
 
 
+## To-dos
+ - [ ] **DBAccess()** constructor in *DBAccess.cpp* 
+ - [ ] **signIn(), signUp()** method in *LibMS.cpp*
+ - [ ] Copy/Paste **Database.h, Database.cpp**
+ - [ ] **ReservationData.cpp**
+ - [ ] **ContentData.cpp**
+ - [ ] **UserData.cpp**
 
 ## Design
 
