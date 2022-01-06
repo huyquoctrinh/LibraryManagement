@@ -62,20 +62,18 @@ void SearchingWidget::on_btnSearch_clicked()
 
     SearchingFilter filter(categories, bookGenres);
     DBAccess* dbaccess = DBAccess::getInstance();
+    ContentData contentDB = dbaccess->getContentDB();
     vector<Reading*> resVec;
     if (ui->cbbSearchBy->currentText() == "Title") {
-        //resVec = dbaccess->getContentDB().searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
-        resVec ={   new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
-                    new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
-                    new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
-                    new AcademicJournal("11", sttUnavailable, 0, 12, "Journal 1", "Author Tri", 2020, 1, "2525", "Science")};
+        resVec = contentDB.searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
     }
     else {
-        //resVec = dbaccess->getContentDB().searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
-        resVec ={   new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
+        resVec = contentDB.searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
+        resVec = {   new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new Book("12", sttAvailable, 12, 15, "The Alchelmist", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"),
                     new AcademicJournal("11", sttUnavailable, 0, 12, "Journal 1", "Author Tri", 2020, 1, "2525", "Science")};
+
     }
     _results = QVector<Reading*>(resVec.begin(), resVec.end());
     displayContentResults(_results);

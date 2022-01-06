@@ -6,10 +6,12 @@ ContentDetailsDialog::ContentDetailsDialog(QWidget *parent) :
     ui(new Ui::ContentDetailsDialog)
 {
     ui->setupUi(this);
+    qInfo() << "init() 1";
     ui->stackedWidget->setCurrentIndex(0);
-    ui->edtDateStart->setDate(QDate::currentDate());
+    /*ui->edtDateStart->setDate(QDate::currentDate());
     ui->edtDateReturned->setDate(QDate::currentDate());
-    ui->lblSttReserve->setVisible(false);
+    ui->lblSttReserve->setVisible(false);*/
+    qInfo() << "init() 2";
     setInfo();
 }
 
@@ -20,6 +22,7 @@ ContentDetailsDialog::~ContentDetailsDialog()
 
 void ContentDetailsDialog::setInfo()
 {
+
     User* _currentUser = LibMS::getInstance()->getCurrentUser();
     Reading* reading = LibMS::getInstance()->getViewingReading();
     ui->lblTitle->setText(QString::fromStdString(reading->getTitle()));
@@ -77,7 +80,6 @@ void ContentDetailsDialog::on_btnReserve_clicked()
        ui->lblSttReserve->setStyleSheet("QLabel { color : red; }");
        ui->lblSttReserve->setVisible(true);
     }
-
 }
 
 

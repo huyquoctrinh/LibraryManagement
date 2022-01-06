@@ -2,12 +2,22 @@
 
 
 ## To-dos
- - [ ] **DBAccess()** constructor in *DBAccess.cpp* 
- - [ ] **signIn(), signUp()** method in *LibMS.cpp*
- - [ ] Copy/Paste **Database.h, Database.cpp**
- - [ ] **ReservationData.cpp**
- - [ ] **ContentData.cpp**
- - [ ] **UserData.cpp**
+ - [x] **DBAccess()** constructor in *DBAccess.cpp* 
+ - [x] **signIn()** method in *LibMS.cpp*
+ - [ ] **signUp()** method in *LibMS.cpp*
+ - [x] Copy/Paste **Database.h, Database.cpp**
+ - [ ] Fix **readAllReservation()**, **readUserReservation()** method in *ReservationData.cpp*
+ - [ ] Fix **createReservation()** method in *ReservationData.cpp*, should update database.
+ - [ ] Fix **updateContent()**, **addContent()** methods in *ContentData.cpp*
+ - [ ] Fix **deleteContent()** method in *ContentData.cpp*, just need to compare ID only!
+ - [ ] Copy/Paste **addStudent()** method in *UserData.cpp*
+ - [ ] Copy/Paste **updateStudent()** method in *UserData.cpp*
+ - [ ] Copy/Paste **deleteStudent()** method in *UserData.cpp*
+ - [ ] Copy/Paste **searchReadingByTitle()**, **searchReadingByAuthors()** in *ContentData.cpp*
+
+### Notes:
+1. Content, Reading are abstract classes. If a method returns a Content/Reading pointer, that pointer should point to an instance of Book or Academic Journal.
+2. **Use filter to refine the results!**
 
 ## Design
 

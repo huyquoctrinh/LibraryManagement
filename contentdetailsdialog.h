@@ -10,6 +10,7 @@
 #include "Student.h"
 #include "Reservation.h"
 #include "LibMS.h"
+#include <QDebug>
 
 #define ERROR_OUT_OF_DAYS "Borrowed item must be returned within limited days of the Start Date."
 #define ERROR_FAILED "Cannot complete your reservation. Please contact the staff for more information."

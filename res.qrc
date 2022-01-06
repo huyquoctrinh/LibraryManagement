@@ -13,4 +13,7 @@
         <file>img/icon/reservation.png</file>
         <file>img/icon/storage.png</file>
     </qresource>
+    <qresource prefix="/db">
+        <file>Account.csv</file>
+    </qresource>
 </RCC>

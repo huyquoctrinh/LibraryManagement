@@ -38,11 +38,12 @@ void BorrowedWidget::on_btnFilter_clicked()
 {
     LibMS* libms = LibMS::getInstance();
     User* currentUser = libms->getCurrentUser();
-    qInfo() << QString::fromStdString(currentUser->getName());
+
     ReservationFilter filter(ui->chbExpired->isChecked(), ui->chbUnexpired->isChecked());
     vector<Reservation> resVec;
     if (currentUser->getUserType() == uStudent) {
         Student* student = dynamic_cast<Student*>(currentUser);
+        qInfo() << QString::fromStdString(currentUser->getId());
         resVec = student->getReservations(filter);
     }
     else

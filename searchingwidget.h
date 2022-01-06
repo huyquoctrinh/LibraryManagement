@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include "bookwidgetitem.h"
-#include "Reading.h"
 #include "LibMS.h"
 #include "DBAccess.h"
 #include "SearchingFilter.h"

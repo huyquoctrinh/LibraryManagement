@@ -1,5 +1,5 @@
 #include "Account.h"
-
+#include "Database.h"
 Account::Account()
 {
 }
@@ -10,6 +10,19 @@ Account::Account(string username, string pass) : _username(username), _password(
 
 bool Account::changePassword(string newPassword)
 {
+	if (newPassword.length()<6){
+        return 0;
+    }
+	Database* tmp = new Database("Account.csv");
+	vector<vector<string>> recordData = tmp->getRecord();
+	for (auto row:recordData){
+		if (row[1]==this->_username){
+			row[2] = newPassword;
+			this->_password = newPassword;
+			tmp->updateRecord(row);
+			return 1; 
+		}
+	}
     //
 	return false;
 }

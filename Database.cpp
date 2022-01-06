@@ -1,6 +1,7 @@
 #include "Database.h"
 
 Database::Database(string database){
+    database = Utils::getDir(database);
     this->databaseName = database;
 }
 
@@ -42,6 +43,14 @@ void Database::createRecord(vector<vector<string>> record){
 }
 void Database::updateRecord(vector<string> data){
     vector<vector<string>> tmp = this->getRecord();
+    string idx = data[0];
+    int id = stoi(idx);
+    tmp[id-1] = data;
+    this->createRecord(tmp);
+}
+
+void Database::addRecord(vector<string> data){
+    vector<vector<string>> tmp = this->getRecord();
     tmp.push_back(data);
     ofstream out(this->databaseName);
     for (auto row:tmp){
@@ -51,6 +60,16 @@ void Database::updateRecord(vector<string> data){
         out<<endl;
     }
 }
-void Database::deleteRecord(){
+void Database::deleteRecord(vector<string> input_vector){
     vector<vector<string>> data = this->getRecord();
+    vector<vector<string>> res;
+    for (auto row:data){
+        if (this->compare(row, input_vector)){
+            continue;
+        }
+        else{
+            res.push_back(row);
+        }
+    }
+    this->createRecord(res);
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ enum Status {
 
 string ToValue(Category category);
 bool ToValue(Status stt);
+Status ToKey(bool stt);
 
 class Content
 {
@@ -37,6 +39,14 @@ public:
     Status getStatus();
 	int getAvailableCount();
 	int getTotalCount();
+	vector<string> getAllData(){
+		vector<string> res;
+		res.push_back(this->_id);
+		res.push_back(ToValue(this->getCategory()));
+		res.push_back(to_string(ToValue(this->getStatus())));
+		res.push_back(to_string(this->_availableCount));
+		res.push_back(to_string(this->_totalCount));
+	}
 
 public:
 	//Cac setter

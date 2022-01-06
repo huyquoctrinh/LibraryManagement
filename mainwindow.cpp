@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     LibMS* libms = LibMS::getInstance();
+    libms->setViewingReading(NULL);
     DBAccess* dbaccess = DBAccess::getInstance();
     ui->setupUi(this);
     initGuestMenu();

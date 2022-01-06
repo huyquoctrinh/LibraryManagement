@@ -32,6 +32,7 @@ public:
     University getUniversity() const;
     DateTime getRenewalDate() const;
     MemberShip* getMemberShip() const;
+    vector<string> getAllStudentData();
 public:
 	//Cac setter
     void setStudentId(string);

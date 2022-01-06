@@ -1,4 +1,6 @@
 #pragma once
+#include <QCoreApplication>
+#include <QDebug>
 #include "Content.h"
 #include "User.h"
 #include "Student.h"
@@ -10,6 +12,7 @@
 #include "AcademicJournal.h"
 #include <vector>
 #include "DBAccess.h"
+#include "Utils.h"
 
 class LibMS
 {

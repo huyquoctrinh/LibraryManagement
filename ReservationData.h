@@ -6,6 +6,7 @@
 #include "Premium.h"
 #include "Account.h"
 #include <vector>
+#include <QDebug>
 
 class Student;
 

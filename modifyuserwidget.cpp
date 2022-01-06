@@ -10,7 +10,7 @@
 #define SUCCESSFUL_UPDATE "Succesfully update user"
 #define FAILED_UPDATE "Failed to update user"
 
-#define FAILED_SEARCH "Content not found"
+#define FAILED_SEARCH "User not found"
 
 ModifyUserWidget::ModifyUserWidget(QWidget *parent) :
     QWidget(parent),
@@ -18,6 +18,7 @@ ModifyUserWidget::ModifyUserWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->rdbBasic->setChecked(true);
+    ui->lblStt->setVisible(false);
 }
 
 ModifyUserWidget::~ModifyUserWidget()
@@ -71,6 +72,7 @@ void ModifyUserWidget::on_btnSearch_clicked()
 
         QString fee = QString::number(student->getMemberShip()->getFee());
         ui->lblFee->setText(fee + "$");
+        ui->lblStt->setVisible(false);
     }
     else
     {

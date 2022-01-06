@@ -87,3 +87,10 @@ bool Content::isAvailable()
 {
 	return _availableCount > 0;
 }
+
+Status ToKey(bool stt)
+{
+    if (stt)
+        return sttAvailable;
+    return sttUnavailable;
+}

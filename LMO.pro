@@ -34,6 +34,7 @@ SOURCES += \
     StudentParser.cpp \
     User.cpp \
     UserData.cpp \
+    Utils.cpp \
     bookwidgetitem.cpp \
     borroweditemwidget.cpp \
     borrowedwidget.cpp \
@@ -80,6 +81,7 @@ HEADERS += \
     UserData.h \
     UserParser.h \
     UserTypeEnum.h \
+    Utils.h \
     bookwidgetitem.h \
     borroweditemwidget.h \
     borrowedwidget.h \
