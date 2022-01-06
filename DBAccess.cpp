@@ -18,6 +18,7 @@ const UserData &DBAccess::getUserDB() const
 DBAccess::DBAccess()
 {
     // Construct _reservationDB, _contentDB, _userDB
+    _reservationDB = new ReservationData("xxx.db");
 }
 
 DBAccess *DBAccess::getInstance()
