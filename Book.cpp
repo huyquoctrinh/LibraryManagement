@@ -54,3 +54,19 @@ Book::~Book()
 {
 
 }
+
+vector<string> Book::getAllData()
+{
+    vector<string> res;
+    res.push_back(this->getId());
+    res.push_back(this->_ISBN);
+    res.push_back("Book");
+    res.push_back(this->_genre);
+    res.push_back(this->getTitle());
+    res.push_back(this->getAuthors());
+    res.push_back(this->_publisher);
+    res.push_back(to_string(this->getPublicationYear()));
+    res.push_back(to_string(this->getAvailableCount()));
+    res.push_back(to_string(this->getTotalCount()));
+    return res;
+}

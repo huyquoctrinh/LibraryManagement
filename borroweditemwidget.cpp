@@ -16,12 +16,12 @@ BorrowedItemWidget::~BorrowedItemWidget()
 void BorrowedItemWidget::setContent(Reservation reservation)
 {
     _reservation = reservation;
-    Reading reading = *(static_cast<Reading*>(reservation.getContent()));
+    Reading* reading = static_cast<Reading*>(reservation.getContent());
     User* user = reservation.getBorrower();
 
-    QString title = QString::fromStdString(reading.getTitle());
-    QString category = QString::fromStdString(ToValue(reading.getCategory()));
-    QString authors = QString::fromStdString(reading.getAuthors());
+    QString title = QString::fromStdString(reading->getTitle());
+    QString category = QString::fromStdString(ToValue(reading->getCategory()));
+    QString authors = QString::fromStdString(reading->getAuthors());
     QString borrowerName = QString::fromStdString(user->getName());
 
     ui->lblTitle->setText(title);
@@ -45,7 +45,6 @@ void BorrowedItemWidget::on_label_4_linkActivated(const QString &link)
 {
     qInfo() << link;
 }
-
 
 void BorrowedItemWidget::on_btnReturn_clicked()
 {

@@ -23,8 +23,7 @@ public:
 
     virtual ~User();
 public:
-	Content* browseContent();
-	Content viewContent();
+    Content* browseContent();
     bool deactivate();
     virtual UserType getUserType() = 0;
 	//Cac getter

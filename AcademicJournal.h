@@ -28,4 +28,5 @@ public:
     AcademicJournal(Status status, int availCount, int totalCount, string title, string authors, int publicYear, int volume, string ISSN, string subject);
 
 	virtual ~AcademicJournal();
+    vector<string> getAllData();
 };

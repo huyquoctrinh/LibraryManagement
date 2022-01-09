@@ -10,11 +10,9 @@ CONFIG += c++11
 
 SOURCES += \
     AcademicJournal.cpp \
-    AcademicJournalParser.cpp \
     Account.cpp \
     Basic.cpp \
     Book.cpp \
-    BookParser.cpp \
     Content.cpp \
     ContentData.cpp \
     DBAccess.cpp \
@@ -52,11 +50,9 @@ SOURCES += \
 
 HEADERS += \
     AcademicJournal.h \
-    AcademicJournalParser.h \
     Account.h \
     Basic.h \
     Book.h \
-    BookParser.h \
     Content.h \
     ContentData.h \
     ContentParser.h \

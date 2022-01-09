@@ -7,13 +7,13 @@ bool ContentData::addContent(Content* data){
         return 0;
     }
     vector<string> content = data->getAllData();
+
     int id = this->contentDatabase.size();
-    vector<string> tmp;
-    tmp.push_back(to_string(id));
-    for (auto i:content){
-        tmp.push_back(i);
-    }
-    updateRecord(content);
+    content[0] = to_string(id);
+    for (auto a : content)
+        qInfo() << QString::fromStdString(a);
+    contentDatabase.push_back(content);
+    createRecord(contentDatabase);
     this->contentDatabase = this->getRecord();
     return 1;
 }
@@ -48,6 +48,7 @@ bool ContentData::updateContent(Content* data){
             for (string str : res)
                 qInfo() << "res: " << QString::fromStdString(str);
             updateRecord(res);
+            this->contentDatabase = this->getRecord();
             return 1;
         }
     }
@@ -58,8 +59,8 @@ Book* ContentData::searchByISBN(string isbn){
     for (auto row:this->contentDatabase){
         if (row[1] == isbn ){
             // vector<string> borrowers = Database::Parse(row[10],", ");
-            int avaiCount = stoi(row[9]);
-            int totalCount = stoi(row[8]);
+            int avaiCount = stoi(row[8]);
+            int totalCount = stoi(row[9]);
             Book* content = new Book(row[0], ToKey(totalCount - avaiCount > 0),avaiCount,totalCount,row[4],row[5],stoi(row[7]),row[6],isbn,row[3]);
             return content;
         }
@@ -73,15 +74,15 @@ vector<Reading *> ContentData::searchAllReading()
     for (auto row:this->contentDatabase){
         qInfo() << QString::fromStdString(row[2]);
         if (row[2] == "Book"){
-            int avaiCount = stoi(row[9]);
-            int totalCount = stoi(row[8]);
+            int avaiCount = stoi(row[8]);
+            int totalCount = stoi(row[9]);
             Book* content = new Book(row[0], ToKey(totalCount - avaiCount > 0),avaiCount,totalCount,row[4],row[5],stoi(row[7]),row[6],row[1],row[3]);
             qInfo() << QString::fromStdString(row[4]);
             res.push_back(content);
         }
         if (row[2] == "Journal"){
-            int avaiCount = stoi(row[9]);
-            int totalCount = stoi(row[8]);
+            int avaiCount = stoi(row[8]);
+            int totalCount = stoi(row[9]);
             AcademicJournal* content = new AcademicJournal(row[0], ToKey(totalCount - avaiCount > 0), avaiCount, totalCount,row[4],row[5],stoi(row[6]),stoi(row[7]),row[1],row[3]);
             qInfo() << QString::fromStdString(row[4]);
             res.push_back(content);
@@ -93,8 +94,8 @@ vector<Reading *> ContentData::searchAllReading()
 AcademicJournal* ContentData::searchByISSN(string issn){
     for (auto row:this->contentDatabase){
         if (row[1] == issn ){
-            int avaiCount = stoi(row[9]);
-            int totalCount = stoi(row[8]);
+            int avaiCount = stoi(row[8]);
+            int totalCount = stoi(row[9]);
             AcademicJournal* content = new AcademicJournal(row[0], ToKey(totalCount - avaiCount > 0), avaiCount, totalCount,row[4],row[5],stoi(row[6]),stoi(row[7]),issn,row[3]);
             return content;
         }
@@ -109,14 +110,14 @@ vector<Reading*> ContentData::searchReadingByTitle(string keyword, SearchingFilt
     for (auto row:this->contentDatabase){
         if (row[4] == keyword){
             if (row[2] == "Book"){
-                int avaiCount = stoi(row[9]);
-                int totalCount = stoi(row[8]);
+                int avaiCount = stoi(row[8]);
+                int totalCount = stoi(row[9]);
                 Book* content = new Book(row[0], ToKey(totalCount - avaiCount > 0),avaiCount,totalCount,row[4],row[5],stoi(row[7]),row[6],row[1],row[3]);
                 res.push_back(content);
             }
             if (row[2] == "Journal"){
-                int avaiCount = stoi(row[9]);
-                int totalCount = stoi(row[8]);
+                int avaiCount = stoi(row[8]);
+                int totalCount = stoi(row[9]);
                 AcademicJournal* content = new AcademicJournal(row[0], ToKey(totalCount - avaiCount > 0), avaiCount, totalCount,row[4],row[5],stoi(row[6]),stoi(row[7]),row[1],row[3]);
                 res.push_back(content);
             }
@@ -129,18 +130,22 @@ vector<Reading*> ContentData::searchReadingByTitle(string keyword, SearchingFilt
 vector<Reading *> ContentData::searchReadingByAuthors(string keyword, SearchingFilter filter)
 {
     // Return all contents whose authors includes keyword, refine the result with filter
+
+
+    // filter include two attributes: they are all vectors.
+    // Get all possible results that have category in categories vector, and have genre (if book) in genres vector.
     vector<Reading*> res;
     for (auto row:this->contentDatabase){
         if (row[5] == keyword){
             if (row[2] == "Book"){
-                int avaiCount = stoi(row[9]);
-                int totalCount = stoi(row[8]);
+                int avaiCount = stoi(row[8]);
+                int totalCount = stoi(row[9]);
                 Book* book = new Book(row[0],ToKey(totalCount - avaiCount > 0),stoi(row[7]),stoi(row[8]),row[4],row[5],stoi(row[7]),row[6],row[1],row[3]);
                 res.push_back(book);
             }
             if(row[2] == "Journal"){
-                int avaiCount = stoi(row[9]);
-                int totalCount = stoi(row[8]);
+                int avaiCount = stoi(row[8]);
+                int totalCount = stoi(row[9]);
                 AcademicJournal* academic =  new AcademicJournal(row[0], ToKey(totalCount - avaiCount > 0),stoi(row[9]),stoi(row[8]),row[4],row[5],stoi(row[6]),stoi(row[7]),row[1],row[3]);
                 res.push_back(academic);
             }
@@ -153,14 +158,14 @@ Content* ContentData::getContentbyID(string id){
     for (auto row:this->contentDatabase) {
         if (id == row[0]){
             if (row[2]=="Book"){
-                int avaiCount = stoi(row[9]);
-                int totalCount = stoi(row[8]);
+                int avaiCount = stoi(row[8]);
+                int totalCount = stoi(row[9]);
                 Book* book = new Book(row[0],ToKey(totalCount - avaiCount > 0),stoi(row[7]),stoi(row[8]),row[4],row[5],stoi(row[7]),row[6],row[1],row[3]);
                 return book;
             }
             if (row[2] == "Journal"){
-                int avaiCount = stoi(row[9]);
-                int totalCount = stoi(row[8]);
+                int avaiCount = stoi(row[8]);
+                int totalCount = stoi(row[9]);
                 return new AcademicJournal(row[0], ToKey(totalCount - avaiCount > 0),stoi(row[9]),stoi(row[8]),row[4],row[5],stoi(row[6]),stoi(row[7]),row[1],row[3]);
             }
         }

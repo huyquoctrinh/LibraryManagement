@@ -32,11 +32,6 @@ Content * User::browseContent()
 	return nullptr;
 }
 
-Content User::viewContent()
-{
-	return Content();
-}
-
 bool User::deactivate()
 {
 	return false;
