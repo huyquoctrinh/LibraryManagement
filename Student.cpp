@@ -48,12 +48,12 @@ Student::Student(string name, DateTime dateOfBirth, bool gender, Account account
     _membership = membership;
 }
 
-vector Student::getAllStudentData(){
+vector<string> Student::getAllStudentData(){
     vector<string> res;
     res.push_back(this->getId());
-    Account* acc = this->getAccount();
-    string uname = acc->getUsername();
-    string passw = acc->getPassword();
+    Account acc = this->getAccount();
+    string uname = acc.getUsername();
+    string passw = acc.getPassword();
     res.push_back(uname);
     res.push_back(passw);
     res.push_back(this->getName());
@@ -65,7 +65,6 @@ vector Student::getAllStudentData(){
     res.push_back(this->_studentId);
     DateTime renewalDate = this->getRenewalDate();
     res.push_back(renewalDate.To_String());
-    res.push_back(this->_membership);
     string typename = this->_membership->getTypename();
     res.push_back(typename);
     return res;

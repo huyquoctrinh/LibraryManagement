@@ -40,7 +40,7 @@ bool ContentData::updateContent(Content* data){
     }
     for (auto contentRow: contentDatabase){
         if (contentRow[0] == data->getId()){
-            vector<string> res = data->getAllData();
+            vector<string> res = data->getupdateContentData();
             for (auto str : res)
                 qInfo() << "res: " << QString::fromStdString(str);
             updateRecord(res);

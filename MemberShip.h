@@ -17,9 +17,7 @@ public:
     MemberShip(string typeName, double fee);
     MemberShip(const MemberShip&);
 public:
-	string getTypename(){
-		return this->_typeName;
-	};
+	string getTypename();
 	double getFee();
 public:
 	//Cac setter

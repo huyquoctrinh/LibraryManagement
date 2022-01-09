@@ -5,7 +5,8 @@
 
 bool ReservationData::createReservation()
 {
-    createRecord(this->reservationData);
+    Database* tmp = Database("Reservation.csv");
+    tmp->createRecord(this->reservationData);
     return true;
 }
 
@@ -26,7 +27,9 @@ vector<Reservation> ReservationData::readAllReservations(ReservationFilter filte
         // Content* content = new Content(id, Tocat(row[2]), ToKey(row[]));
         ContentData* ctmp = new ContentData("Book.csv");
         Content* content = ctmp->getContentbyID(row[0]);
-        Reservation resevereRow =  Reservation(startTime, expiredTime, content, borrower, 1);
+        int isre = stoi(row[5]);
+        bool isReturned = !!isre;
+        Reservation resevereRow =  Reservation(startTime, expiredTime, content, borrower, isReturned);
         res.push_back(resevereRow);
     }
     return res;

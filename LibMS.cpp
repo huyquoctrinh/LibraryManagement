@@ -94,7 +94,14 @@ bool LibMS::signUp(Student* newStudent)
     // Return: true if success, false if not.
 
     Database* db = new Database("Account.csv");
-    db->addRecord(newStudent->getStudentId());
+    vector<vector<string>> record = db->getRecord(); 
+    int id = record.size();
+    vector<string> tmp = newStudent->getAllStudentData();
+    vector<string> res;
+    res.push_back(id);
+    for (auto info:tmp){
+        res.push_back(info);
+    }
     // dbaccess->g
     //dbaccess->getUserDB()->signIn(newStudent->getAccount().getUsername(), newStudent->getAccount().getPassword());
     // string username = newStudent->

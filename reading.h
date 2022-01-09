@@ -16,6 +16,7 @@ public:
 	string getTitle();
 	string getAuthors();
 	int getPublicationYear();
+	virtual vector<string> getupdateContentData() = 0;
 	//Cac ham setter
 public:
 	void setTitle(string);
@@ -25,6 +26,5 @@ public:
 public:
 	Reading();
     Reading(string id, Category cat, Status status, int availCount, int totalCount, string title, string authors, int publicYear);
-
 	virtual ~Reading();
 };

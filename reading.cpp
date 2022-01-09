@@ -46,3 +46,9 @@ Reading::Reading(string id, Category cat, Status status, int availCount, int tot
 Reading::~Reading()
 {
 }
+
+// vector<string> Reading::getupdateContentData(){
+// 	// if (ToValue(this->getCategory()) == "catBook"){
+// 	// 	this->get
+// 	// }
+// }

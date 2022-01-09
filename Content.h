@@ -44,12 +44,13 @@ public:
 	vector<string> getAllData(){
 		vector<string> res;
 		res.push_back(this->_id);
-		res.push_back(ToValue(this->getCategory()));
-		res.push_back(to_string(ToValue(this->getStatus())));
+		res.push_back(ToValue(this->_category));
+		res.push_back(to_string(ToValue(this->_status)));
 		res.push_back(to_string(this->_availableCount));
 		res.push_back(to_string(this->_totalCount));
+		return res;
 	}
-
+	virtual vector<string> getupdateContentData() = 0;
 public:
 	//Cac setter
 	void setId(string);
