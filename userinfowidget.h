@@ -22,6 +22,8 @@ private:
 
 public:
     void setContent();
+private slots:
+    void on_btnChangePassword_clicked();
 };
 
 #endif // USERINFOWIDGET_H

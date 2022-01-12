@@ -13,7 +13,7 @@ public:
 	Account();
 	Account(string username, string pass);
 public:
-    bool changePassword(string newPassword);
+    bool changePassword(string currentPassword, string newPassword);
 public:
 	//Cac getter
 	string getUsername();

@@ -1,9 +1,6 @@
-1, 9781878220042, Book, Natural Science, Introduction to Climate Science, Felix Fitzroy, Springer, 2002, 2, 2, Trinh Quoc Huy, Nguyen Cong Phuong, , , , , , , 
-2, 9780495011606, Book, Math, Calculus 1, James Stewart, Cengage, 2012, 5, 4, Phan Van Duc,, , , , , , 
-3, 9780961408893, Book, Math, Introduction to Linear Algebra, GilBert Strang, Springer, 2014, 2, 1, Nguyen Cong Phuong, , , , , , , 
-4, 9780593015186, Book, Physics, A Brief History Of Time, Stephen Hawking, Elsevier, 2017, 5, 5, , , , , , , 
-5, 1503212831, Book, Art, Christmas Carol, Jim Carrey, DisneyLand, 2018, 2, 10, , , , , , 
-6, 03029743, Journal, Computer Science, Lecture Notes in Computer Science, Springer, 2020, 10, 2, 2,  , , , , , , 
-7, 123456789, Book, Math, xxx: xxx, xxx, ABBA, 2021, 12, 15, 
-8, 789632145, Book, Biography, x1x2x3, a1a2a3, abba, 2021, 12, 15, , , , 
-9, 563214789, Book, Art, lalala, abbba, bbaa, 3202, 12, 13, , , 
+1, 9.78188E+12, Book, Science, Introduction to Climate Science, Felix Fitzroy, Springer, 2002, 2, 2
+2, 9.7805E+12, Book, Math, Calculus 1, James Stewart, Cengage, 2012, 5, 4 
+3, 9.78096E+12, Book, Math, Introduction to Linear Algebra, GilBert Strang, Springer, 2014, 2, 1
+4, 9.78059E+12, Book, Textbook, A Brief History Of Time, Stephen Hawking, Elsevier, 2017, 5, 5
+5, 3029743, Journal, Computer Science, Lecture Notes in Computer Science, Springer, 2020, 10, 1, 2
+6, , Journal, , , , 0, 0, 1, 0

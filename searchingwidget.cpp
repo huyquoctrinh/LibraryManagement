@@ -7,6 +7,8 @@ SearchingWidget::SearchingWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     displayContentResults(_results);
+
+    on_btnSearch_clicked();
 }
 
 SearchingWidget::~SearchingWidget()

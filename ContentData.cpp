@@ -1,6 +1,7 @@
 #include "ContentData.h"
 #include <QCoreApplication>
 #include <QDebug>
+#include <string>
 
 bool find(vector<string> a, string key){
     for (int i = 0;i < a.size();i++){
@@ -17,10 +18,8 @@ bool ContentData::addContent(Content* data){
     }
     vector<string> content = data->getAllData();
     this->contentDatabase = getRecord();
-    int id = this->contentDatabase.size();
+    int id = stoi(this->contentDatabase[this->contentDatabase.size() - 1][0]) + 1;
     content[0] = to_string(id);
-    for (auto a : content)
-        qInfo() << QString::fromStdString(a);
     contentDatabase.push_back(content);
     createRecord(contentDatabase);
     this->contentDatabase = this->getRecord();

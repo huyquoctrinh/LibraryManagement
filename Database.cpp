@@ -38,9 +38,14 @@ vector<vector<string>> Database::getRecord(){
 void Database::createRecord(vector<vector<string>> record){
     ofstream out(this->databaseName);
     for (auto row:record){
-        for (auto content:row){
-            out<<content<<", ";
+        for (int i = 0; i < row.size(); i++) {
+            out << row[i];
+            if (i < row.size() - 1)
+                out << ", ";
         }
+        /*for (auto content:row){
+            out << content << ", ";
+        }*/
         out<<endl;
     }
     out.close();
@@ -60,9 +65,14 @@ void Database::addRecord(vector<string> data){
     tmp.push_back(data);
     ofstream out(this->databaseName);
     for (auto row:tmp){
-        for (auto content:row){
-            out<<content<<", ";
+        for (int i = 0; i < row.size(); i++) {
+            out << row[i];
+            if (i < row.size() - 1)
+                out << ", ";
         }
+        /*for (auto content:row){
+            out << content << ", ";
+        }*/
         out<<endl;
     }
     out.close();
