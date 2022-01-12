@@ -5,6 +5,7 @@
 #include "Staff.h"
 #include "Database.h"
 #include "Basic.h"
+#include <string>
 
 // UserData::UserData()
 // {
@@ -41,19 +42,27 @@ Student *UserData::searchBySID(string sid)
 
 bool UserData::addStudent(Student *student)
 {
+    this->accountList = getRecord();
+    QString lastId = QString::fromStdString(this->accountList[this->accountList.size() - 1][0]);
+    int maxId = lastId.toInt() + 1;
+
+    student->setId(to_string(maxId));
     addRecord(student->getAllStudentData());
+    this->accountList = getRecord();
     return true;
 }
 
 bool UserData::updateStudent(Student *student)
 {
     updateRecord(student->getAllStudentData());
+    this->accountList = getRecord();
     return true;
 }
 
 bool UserData::deleteStudent(Student *student)
 {
     deleteRecord(student->getAllStudentData());
+    this->accountList = getRecord();
     return true;
 }
 

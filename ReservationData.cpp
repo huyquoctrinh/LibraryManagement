@@ -3,9 +3,16 @@
 #include "Student.h"
 #include "UserData.h"
 
-bool ReservationData::createReservation()
+
+bool ReservationData::createReservation(Reservation reservation)
 {
-    createRecord(this->reservationData);
+    this->reservationData = getRecord();
+    QString lastId = QString::fromStdString(this->reservationData[this->reservationData.size() - 1][0]);
+    int maxId = lastId.toInt() + 1;
+
+    reservation.setId(to_string(maxId));
+    addRecord(reservation.getReserve());
+    this->reservationData = getRecord();
     return true;
 }
 
@@ -14,54 +21,66 @@ vector<vector<string> > ReservationData::getAllData()
     return this->reservationData;
 }
 
+bool checkFilter(ReservationFilter filter, Reservation reservation) {
+
+    if (filter.isBorrowing() && reservation.isReturned() == false)
+        return true;
+    if (filter.isReturned() && reservation.isReturned() == true)
+        return true;
+    return false;
+}
+
 vector<Reservation> ReservationData::readAllReservations(ReservationFilter filter)
 {
+    this->reservationData = getRecord();
     vector<Reservation> res;
+
     for (auto row: this->reservationData){
+
         string id = row[0];
         DateTime startTime = DateTime(row[1]);
         DateTime expiredTime = DateTime(row[2]);
         UserData* tmp = new UserData("Account.csv"); 
-        User* borrower = tmp->GetUser(row[4]); 
-        // Content* content = new Content(id, Tocat(row[2]), ToKey(row[]));
+        User* borrower = tmp->GetUser(row[4]);
         ContentData* ctmp = new ContentData("Book.csv");
-        Content* content = ctmp->getContentbyID(row[0]);
-        Reservation resevereRow =  Reservation(startTime, expiredTime, content, borrower, 1);
-        res.push_back(resevereRow);
+        Content* content = ctmp->getContentbyID(row[3]);
+        qInfo() << QString::fromStdString(row[3]);
+        bool isReturned = row[5] == "1";
+        Reservation resevereRow =  Reservation(startTime, expiredTime, content, borrower, isReturned);
+        resevereRow.setId(id);
+        if (content && checkFilter(filter, resevereRow))
+            res.push_back(resevereRow);
     }
     return res;
 }
 
 vector<Reservation> ReservationData::readUserReservations(User* user, ReservationFilter filter)
 {
+    this->reservationData = getRecord();
     vector<Reservation> res;
     string id = user->getId();
-    qInfo() << QString::number(this->reservationData.size()) << " " << QString::fromStdString(id);
     for (auto row:this->reservationData){
         if (id == row[4]){
+            string id = row[0];
             DateTime start = DateTime(row[1]);
             DateTime end = DateTime(row[2]);
             UserData* tmp = new UserData("Account.csv");
             User* borrower = tmp->GetUser(row[4]);
-            bool isReturned = 1; 
+            bool isReturned = row[5] == "1";
             ContentData* ctmp = new ContentData("Book.csv");
-            Content* content = ctmp->getContentbyID(row[0]);
+            Content* content = ctmp->getContentbyID(row[3]);
             Reservation newReservation = Reservation(start, end, content, borrower, isReturned);
-            res.push_back(newReservation);
-            // return newReservation;
+            newReservation.setId(id);
+            if (content && checkFilter(filter, newReservation))
+                res.push_back(newReservation);
         }
     }
     return res;
-    // return NULL;
-    // return  {
-    //             Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), user, true),
-    //             Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), user, false),
-    //             Reservation(DateTime(3,1,2022), DateTime(9,1,2022), new Book("12", sttAvailable, 12, 15, "The Lord of Rings", "J.K.Rowling", 2012, "Springer", "HHF263", "Fiction"), user, true)
-    //         };
 }
 
 bool ReservationData::updateReservation(Reservation reservation)
 {
+    this->reservationData = getRecord();
     vector<string> reserve  = reservation.getReserve();
     this->updateRecord(reserve);
     this->reservationData = getRecord();
@@ -93,10 +112,6 @@ ReservationData::ReservationData()
 ReservationData::ReservationData(string ReservationDatabase) : Database(ReservationDatabase){
     this->reservationData = getRecord();
 
-}
-
-ReservationData::ReservationData(Reservation * reservations, int reservationCount)
-{
 }
 
 

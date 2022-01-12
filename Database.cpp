@@ -31,8 +31,10 @@ vector<vector<string>> Database::getRecord(){
         vector<string> tmp = Parse(content, ", ");
         res.push_back(tmp);
     }
+    in.close();
     return res;
 }
+
 void Database::createRecord(vector<vector<string>> record){
     ofstream out(this->databaseName);
     for (auto row:record){
@@ -41,12 +43,15 @@ void Database::createRecord(vector<vector<string>> record){
         }
         out<<endl;
     }
+    out.close();
 }
 void Database::updateRecord(vector<string> data){
     vector<vector<string>> tmp = this->getRecord();
     string idx = data[0];
-    int id = stoi(idx);
-    tmp[id-1] = data;
+    for (int i = 0; i < tmp.size(); i++) {
+        if (tmp[i][0] == idx)
+            tmp[i] = data;
+    }
     this->createRecord(tmp);
 }
 
@@ -60,6 +65,7 @@ void Database::addRecord(vector<string> data){
         }
         out<<endl;
     }
+    out.close();
 }
 
 void Database::deleteRecord(vector<string> input_vector){
@@ -74,4 +80,5 @@ void Database::deleteRecord(vector<string> input_vector){
         }
     }
     this->createRecord(res);
+
 }

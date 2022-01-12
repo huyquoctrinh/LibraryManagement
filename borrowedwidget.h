@@ -31,9 +31,11 @@ private:
 public:
     void displayContentResults(vector<Reservation>);
     void setCurrentUser(User* user);
+    void addReadingItem(Reservation reservation);
 
 private slots:
     void on_btnFilter_clicked();
+    void receiveNewReturn();
 };
 
 #endif // BORROWEDWIDGET_H

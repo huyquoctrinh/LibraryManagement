@@ -16,6 +16,8 @@ private:
 public:
     SearchingFilter();
     SearchingFilter(vector<Category>, vector<string>);
+    vector<string> getGenre();
+    vector<string> getCat();
 };
 
 #endif // SEARCHINGFILTER_H

@@ -15,7 +15,7 @@ class ReservationData : public Database
 private:
     vector<vector<string>> reservationData;
 public:
-	bool createReservation();
+    bool createReservation(Reservation reservation);
     vector<vector<string>> getAllData();
     vector<Reservation> readAllReservations(ReservationFilter);
     vector<Reservation> readUserReservations(User*, ReservationFilter);
@@ -25,6 +25,5 @@ public:
 public:
 	ReservationData();
     ReservationData(string ReservationDatabase);
-    ReservationData(Reservation* reservations, int reservationCount);
 };
 

@@ -36,4 +36,6 @@ public:
     void setIsReturned(bool newIsReturned);
 
     vector<string> getReserve();
+    const string &id() const;
+    void setId(const string &newId);
 };

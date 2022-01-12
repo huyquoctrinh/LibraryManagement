@@ -16,9 +16,25 @@ vector<string> Reservation::getReserve()
     res.push_back(this->_id);
     res.push_back(this->_startTime.toString());
     res.push_back(this->_expiredTime.toString());
-    res.push_back(to_string(2));
+    res.push_back(this->_content->getId());
     res.push_back(this->_borrower->getId());
+	if (this->_isReturned==0){
+		res.push_back("0");
+	}
+	else{
+		res.push_back("1");
+	}
     return res;
+}
+
+const string &Reservation::id() const
+{
+    return _id;
+}
+
+void Reservation::setId(const string &newId)
+{
+    _id = newId;
 }
 
 bool Reservation::isExpired()

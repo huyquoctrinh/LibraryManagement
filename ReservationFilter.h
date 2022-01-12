@@ -5,15 +5,15 @@
 class ReservationFilter
 {
 private:
-    bool _isExpired;
-    bool _isUnexpired;
+    bool _isBorrowing;
+    bool _isReturned;
 public:
     ReservationFilter();
-    ReservationFilter(bool isExpired, bool isUnexpired);
-    bool isExpired() const;
-    void setIsExpired(bool newIsExpired);
-    bool isUnexpired() const;
-    void setIsUnexpired(bool newIsUnexpired);
+    ReservationFilter(bool isBorrowing, bool isReturned);
+    bool isBorrowing() const;
+    void setIsBorrowing(bool newIsBorrowing);
+    bool isReturned() const;
+    void setIsReturned(bool newIsReturned);
 };
 
 #endif // RESERVATIONFILTER_H

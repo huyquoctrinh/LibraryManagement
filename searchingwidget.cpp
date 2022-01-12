@@ -66,12 +66,13 @@ void SearchingWidget::on_btnSearch_clicked()
     vector<Reading*> resVec;
     if (ui->txtSearchBar->text().trimmed() == "") {
 
-        resVec = contentDB.searchAllReading();
+        resVec = contentDB.searchAllReading(filter);
     }
     else if (ui->cbbSearchBy->currentText() == "Title") {
         resVec = contentDB.searchReadingByTitle(ui->txtSearchBar->text().toStdString(), filter);
     }
     else {
+        qInfo() << "Search by authors";
         resVec = contentDB.searchReadingByAuthors(ui->txtSearchBar->text().toStdString(), filter);
     }
     _results = QVector<Reading*>(resVec.begin(), resVec.end());

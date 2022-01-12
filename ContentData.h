@@ -17,7 +17,7 @@ public:
     };
 public:
     Book* searchByISBN(string isbn);
-    vector<Reading*> searchAllReading();
+    vector<Reading*> searchAllReading(SearchingFilter filter);
     AcademicJournal* searchByISSN(string issn);
     vector<Reading*> searchReadingByTitle(string keyword, SearchingFilter filter);
     vector<Reading*> searchReadingByAuthors(string keyword, SearchingFilter filter);

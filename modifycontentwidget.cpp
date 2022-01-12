@@ -21,6 +21,7 @@ ModifyContentWidget::ModifyContentWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->lblStt->setVisible(false);
+    ui->rdbJournal->setChecked(true);
 }
 
 ModifyContentWidget::~ModifyContentWidget()
@@ -181,6 +182,29 @@ void ModifyContentWidget::on_btnUpdate_clicked()
         ui->lblStt->setText(FAILED_UPDATE);
         ui->lblStt->setVisible(true);
         ui->lblStt->setStyleSheet("QLabel { color : red; }");
+    }
+}
+
+
+void ModifyContentWidget::on_rdbJournal_toggled(bool checked)
+{
+    if (checked) {
+        ui->txtVolume->setEnabled(true);
+        ui->txtSubject->setEnabled(true);
+        ui->txtISSN->setEnabled(true);
+
+        ui->txtISBN->setEnabled(false);
+        ui->txtPublisher->setEnabled(false);
+        ui->cbbGenre->setEnabled(false);
+    }
+    else {
+        ui->txtVolume->setEnabled(false);
+        ui->txtSubject->setEnabled(false);
+        ui->txtISSN->setEnabled(false);
+
+        ui->txtISBN->setEnabled(true);
+        ui->txtPublisher->setEnabled(true);
+        ui->cbbGenre->setEnabled(true);
     }
 }
 

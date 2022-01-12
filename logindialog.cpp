@@ -46,7 +46,7 @@ void LoginDialog::on_btnCreate_clicked()
         membership = new Premium();
     Account account(ui->txtNewUsername->text().toStdString(), ui->txtNewPassword->text().toStdString());
     Student newStudent(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
-
+    qInfo() << "New student" << QString::fromStdString(name);
     // Sign up
     bool signUpResult = LibMS::getInstance()->signUp(&newStudent);
 

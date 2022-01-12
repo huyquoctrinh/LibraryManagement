@@ -29,6 +29,9 @@ public:
 private slots:
     void on_label_4_linkActivated(const QString &link);
     void on_btnReturn_clicked();
+
+signals:
+    void newReturn();
 };
 
 #endif // BORROWEDITEMWIDGET_H

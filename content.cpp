@@ -3,7 +3,7 @@
 string ToValue(Category category) {
     switch(category) {
         case catBook: return "Book";
-        case catAcademicJournal: return "Academic Journal";
+        case catAcademicJournal: return "Journal";
     }
     return "";
 }

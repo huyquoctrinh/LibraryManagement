@@ -4,7 +4,12 @@ bool Student::reserve(Reservation reservation)
 {
     DBAccess* dbaccess = DBAccess::getInstance();
     ReservationData reservationDb = dbaccess->getReservationDB();
-    //reservationDb.createReservation(reservation);
+    reservationDb.createReservation(reservation);
+
+    Content* content = reservation.getContent();
+    ContentData contentDb = dbaccess->getContentDB();
+    content->setAvailableCount(content->getAvailableCount() - 1);
+    contentDb.updateContent(content);
     return true;
 }
 
@@ -15,6 +20,11 @@ void Student::returnReservation(Reservation reservation)
     // Update reservation
     reservation.setIsReturned(true);
     reservationDb.updateReservation(reservation);
+
+    Content* content = reservation.getContent();
+    ContentData contentDb = dbaccess->getContentDB();
+    content->setAvailableCount(content->getAvailableCount() + 1);
+    contentDb.updateContent(content);
 }
 
 vector<Reservation> Student::getReservations(ReservationFilter filter)
