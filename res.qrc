@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/icon/search.png</file>
+        <file>img/icon/book-cart.png</file>
+        <file>img/icon/account.png</file>
+        <file>img/icon/regulation.png</file>
+        <file>img/icon/logout.png</file>
+        <file>img/icon/book.png</file>
+        <file>img/pics/regulation-content.png</file>
+        <file>img/pics/cover-1.jpg</file>
+        <file>img/icon/login.png</file>
+        <file>img/icon/readers.png</file>
+        <file>img/icon/reservation.png</file>
+        <file>img/icon/storage.png</file>
+    </qresource>
+    <qresource prefix="/db">
+        <file>Account.csv</file>
+    </qresource>
+</RCC>
