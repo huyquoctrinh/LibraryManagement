@@ -1,5 +1,17 @@
 # Library Management System
 
+## Database Format
+### Book.csv
+
+[Id], [ISBN/ISSN], [Category], [Genre/Subject], [Title], [Author], [Publisher], [Publication Year], [Volume (for Journal only)], [Available count], [Total count]
+
+### Account.csv
+
+[Id], [Username], [Password], [Name], [Date of Birth], [Gender], [User Type], [University], [SID], [Renewal Date], [Membership]
+
+### Reservation.csv
+
+[Id], [Start Date], [Expired Date], [Content Id], [Borrower Id], [Is returned]
 
 ## To-dos
  - [x] **DBAccess()** constructor in *DBAccess.cpp* 
