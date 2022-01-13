@@ -5,5 +5,8 @@ enum University
 	HCMUS,
 	HCMUT,
 	IU,
-	USSH
+    USSH,
+    UEL,
+    UIT,
+    HCMUTE
 };

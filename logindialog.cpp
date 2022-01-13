@@ -30,35 +30,56 @@ void LoginDialog::on_btnSignup_clicked()
 void LoginDialog::on_btnCreate_clicked()
 {
     // Student's info
-    string name = ui->txtName->text().toStdString();
+    string name = ui->txtName->text().trimmed().toStdString();
     bool gender = ui->rdbMale->isChecked() ? false : true;
     QDate dob = ui->edtDateOfBirth->date();
     DateTime dateOfBirth(dob.day(), dob.month(), dob.year());
     QDate rnd = ui->edtRenewalDate->date();
     DateTime renewalDate(rnd.day(), rnd.month(), rnd.year());
-    University uni = toKey(ui->txtUni->text().toStdString());
-    string sid = ui->txtSID->text().toStdString();
+    University uni = toKey(ui->cbbUni->currentText().trimmed().toStdString());
+    string sid = ui->txtSID->text().trimmed().toStdString();
 
     MemberShip* membership;
     if (ui->rdbBasic->isChecked())
         membership = new Basic();
     else
         membership = new Premium();
-    Account account(ui->txtNewUsername->text().toStdString(), ui->txtNewPassword->text().toStdString());
-    Student newStudent(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
-    qInfo() << "New student" << QString::fromStdString(name);
-    // Sign up
-    bool signUpResult = LibMS::getInstance()->signUp(&newStudent);
 
-    if (signUpResult) // successfully create an account
-    {
-        ui->lblSignUpStt->setText(SUCCESSFUL_SIGN_UP);
+    string username = ui->txtNewUsername->text().trimmed().toStdString();
+    string password = ui->txtNewPassword->text().trimmed().toStdString();
+    string password2 = ui->txtNewPassword_2->text().trimmed().toStdString();
+    if (password != password2) {
+        ui->lblSignUpStt->setText("Not match password!");
         ui->lblSignUpStt->setVisible(true);
+        ui->lblSignUpStt->setStyleSheet("QLabel { color : red; }");
     }
-    else
-    {
-        ui->lblSignUpStt->setText(FAILED_SIGN_UP);
+    else if (username == "" || password == "" || name == "" || sid == "") {
+        ui->lblSignUpStt->setText(INCOMPLETE_FORM);
         ui->lblSignUpStt->setVisible(true);
+        ui->lblSignUpStt->setStyleSheet("QLabel { color : red; }");
+    }
+    else {
+        Account account(username, password);
+        Student newStudent(name, dateOfBirth, gender, account, sid, uni, renewalDate, membership);
+        // Sign up
+        bool signUpResult = LibMS::getInstance()->signUp(&newStudent);
+
+        if (signUpResult) // successfully create an account
+        {
+            ui->lblSignUpStt->setText(SUCCESSFUL_SIGN_UP);
+            ui->lblSignUpStt->setVisible(true);
+            ui->lblSignUpStt->setStyleSheet("QLabel { color : green; }");
+            ui->txtName->setText("");
+            ui->txtSID->setText("");
+            ui->txtNewUsername->setText("");
+            ui->txtNewPassword->setText("");
+        }
+        else
+        {
+            ui->lblSignUpStt->setText(FAILED_SIGN_UP);
+            ui->lblSignUpStt->setVisible(true);
+            ui->lblSignUpStt->setStyleSheet("QLabel { color : red; }");
+        }
     }
 }
 

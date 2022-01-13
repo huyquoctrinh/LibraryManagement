@@ -42,6 +42,7 @@ Student *UserData::searchBySID(string sid)
 
 bool UserData::addStudent(Student *student)
 {
+    if (student == NULL) return false;
     this->accountList = getRecord();
     QString lastId = QString::fromStdString(this->accountList[this->accountList.size() - 1][0]);
     int maxId = lastId.toInt() + 1;
@@ -54,6 +55,7 @@ bool UserData::addStudent(Student *student)
 
 bool UserData::updateStudent(Student *student)
 {
+    if (student == NULL) return false;
     updateRecord(student->getAllStudentData());
     this->accountList = getRecord();
     return true;
@@ -61,6 +63,7 @@ bool UserData::updateStudent(Student *student)
 
 bool UserData::deleteStudent(Student *student)
 {
+    if (student == NULL) return false;
     deleteRecord(student->getAllStudentData());
     this->accountList = getRecord();
     return true;

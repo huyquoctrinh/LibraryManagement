@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,0" columnstretch="1,4,1" columnminimumwidth="0,1,0">
+  <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,0" columnstretch="1,7,1" columnminimumwidth="0,1,0">
    <item row="0" column="1">
     <spacer name="verticalSpacer_2">
      <property name="orientation">
@@ -47,7 +47,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="label_22">
          <property name="text">
-          <string>Full name</string>
+          <string>Full name*</string>
          </property>
         </widget>
        </item>
@@ -87,7 +87,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="label_17">
          <property name="text">
-          <string>Date of birth</string>
+          <string>Date of birth*</string>
          </property>
         </widget>
        </item>
@@ -97,17 +97,14 @@
        <item row="3" column="0">
         <widget class="QLabel" name="label_18">
          <property name="text">
-          <string>University</string>
+          <string>University*</string>
          </property>
         </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="txtUni"/>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_19">
          <property name="text">
-          <string>Student ID</string>
+          <string>Student ID*</string>
          </property>
         </widget>
        </item>
@@ -168,6 +165,45 @@
        <item row="7" column="1">
         <widget class="QDateEdit" name="edtRenewalDate"/>
        </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="cbbUni">
+         <item>
+          <property name="text">
+           <string>HCMUS</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HCMUT</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>USSH</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>IU</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UEL</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UIT</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HCMUTE</string>
+          </property>
+         </item>
+        </widget>
+       </item>
       </layout>
      </item>
      <item row="0" column="1">
@@ -175,7 +211,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="label_26">
          <property name="text">
-          <string>Username</string>
+          <string>Username*</string>
          </property>
         </widget>
        </item>
@@ -185,12 +221,16 @@
        <item row="1" column="0">
         <widget class="QLabel" name="label_27">
          <property name="text">
-          <string>Password</string>
+          <string>Password*</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="txtPassword"/>
+        <widget class="QLineEdit" name="txtPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0" colspan="2">
         <widget class="QPushButton" name="btnAdd">
@@ -257,6 +297,13 @@
         </spacer>
        </item>
        <item>
+        <widget class="QPushButton" name="btnNew">
+         <property name="text">
+          <string>New Student</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btnUpdate">
          <property name="text">
           <string>Update</string>
@@ -302,6 +349,23 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>txtName</tabstop>
+  <tabstop>rdbFemale</tabstop>
+  <tabstop>rdbMale</tabstop>
+  <tabstop>edtDateOfBirth</tabstop>
+  <tabstop>cbbUni</tabstop>
+  <tabstop>txtSID</tabstop>
+  <tabstop>rdbBasic</tabstop>
+  <tabstop>rdbPremium</tabstop>
+  <tabstop>edtRenewalDate</tabstop>
+  <tabstop>txtUsername</tabstop>
+  <tabstop>txtPassword</tabstop>
+  <tabstop>btnAdd</tabstop>
+  <tabstop>btnSearch</tabstop>
+  <tabstop>btnUpdate</tabstop>
+  <tabstop>btnDeactivate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

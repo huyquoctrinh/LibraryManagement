@@ -44,6 +44,7 @@ void ModifyContentWidget::on_btnSearch_clicked()
             ui->txtPublisher->setText(QString::fromStdString(book->getPublisher()));
             ui->cbbGenre->setCurrentText(QString::fromStdString(book->getGenre()));
             ui->rdbBook->setChecked(true);
+            ui->txtISBN->setEnabled(false);
         }
 
     } else {
@@ -56,6 +57,7 @@ void ModifyContentWidget::on_btnSearch_clicked()
             ui->txtVolume->setText(QString::number(journal->getVolume()));
             ui->txtSubject->setText(QString::fromStdString(journal->getSubject()));
             ui->rdbJournal->setChecked(true);
+            ui->txtISSN->setEnabled(false);
         }
     }
     libms->setViewingReading(reading);
@@ -86,38 +88,48 @@ void ModifyContentWidget::on_btnAdd_clicked()
 {
     User* user = LibMS::getInstance()->getCurrentUser();
     Staff* staff = dynamic_cast<Staff*>(user);
-    string title = ui->txtTitle->text().toStdString();
-    string authors = ui->txtAuthor->text().toStdString();
-    int pubYear = ui->txtPubYear->text().toInt();
+    string title = ui->txtTitle->text().trimmed().toStdString();
+    string authors = ui->txtAuthor->text().trimmed().toStdString();
+    int pubYear = ui->txtPubYear->text().trimmed().toInt();
     Status status = sttAvailable;
     if (ui->cbbStatus->currentText() == "Unavailable")
         status = sttUnavailable;
-    int avaiCount = ui->txtAvaiCount->text().toInt();
-    int totalCount = ui->txtTotalCount->text().toInt();
-    Content* newContent;
-    if (ui->rdbBook->isChecked()) {
-        string publisher = ui->txtPublisher->text().toStdString();
-        string isbn = ui->txtISBN->text().toStdString();
-        string genre = ui->cbbGenre->currentText().toStdString();
-        Book* newBook = new Book(status, avaiCount, totalCount, title, authors, pubYear, publisher, isbn, genre);
-        newContent = newBook;
-    }
-    else {
-        int volume = ui->txtVolume->text().toInt();
-        string issn = ui->txtISSN->text().toStdString();
-        string subject = ui->txtSubject->text().toStdString();
-        AcademicJournal* newJournal = new AcademicJournal(status, avaiCount, totalCount, title, authors, pubYear, volume, issn, subject);
-        newContent = newJournal;
-    }
-    bool addResult = staff->addContent(newContent);
-    if (addResult) {
-        ui->lblStt->setText(SUCCESSFUL_ADD);
-        ui->lblStt->setVisible(true);
-        ui->lblStt->setStyleSheet("QLabel { color : green; }");
-    } else {
-        ui->lblStt->setText(FAILED_ADD);
+    int avaiCount = ui->txtAvaiCount->text().trimmed().toInt();
+    int totalCount = ui->txtTotalCount->text().trimmed().toInt();
+    Content* newContent = NULL;
+
+    string publisher = ui->txtPublisher->text().trimmed().toStdString();
+    string isbn = ui->txtISBN->text().trimmed().toStdString();
+    string genre = ui->cbbGenre->currentText().toStdString();
+
+    int volume = ui->txtVolume->text().trimmed().toInt();
+    string issn = ui->txtISSN->text().trimmed().toStdString();
+    string subject = ui->txtSubject->text().trimmed().toStdString();
+
+    if (title == "") {
+        ui->lblStt->setText("Please fill in required fields");
         ui->lblStt->setVisible(true);
         ui->lblStt->setStyleSheet("QLabel { color : red; }");
+    }
+    else {
+        if (ui->rdbBook->isChecked() && isbn != "") {
+            Book* newBook = new Book(status, avaiCount, totalCount, title, authors, pubYear, publisher, isbn, genre);
+            newContent = newBook;
+        }
+        else if (ui->rdbJournal->isChecked() && issn != "") {
+            AcademicJournal* newJournal = new AcademicJournal(status, avaiCount, totalCount, title, authors, pubYear, volume, issn, subject);
+            newContent = newJournal;
+        }
+        bool addResult = staff->addContent(newContent);
+        if (addResult) {
+            ui->lblStt->setText(SUCCESSFUL_ADD);
+            ui->lblStt->setVisible(true);
+            ui->lblStt->setStyleSheet("QLabel { color : green; }");
+        } else {
+            ui->lblStt->setText(FAILED_ADD);
+            ui->lblStt->setVisible(true);
+            ui->lblStt->setStyleSheet("QLabel { color : red; }");
+        }
     }
 }
 
@@ -196,6 +208,8 @@ void ModifyContentWidget::on_rdbJournal_toggled(bool checked)
         ui->txtISBN->setEnabled(false);
         ui->txtPublisher->setEnabled(false);
         ui->cbbGenre->setEnabled(false);
+
+        ui->cbbFilter->setCurrentText("ISSN");
     }
     else {
         ui->txtVolume->setEnabled(false);
@@ -205,6 +219,28 @@ void ModifyContentWidget::on_rdbJournal_toggled(bool checked)
         ui->txtISBN->setEnabled(true);
         ui->txtPublisher->setEnabled(true);
         ui->cbbGenre->setEnabled(true);
+
+        ui->cbbFilter->setCurrentText("ISBN");
     }
+}
+
+
+void ModifyContentWidget::on_btnNew_clicked()
+{
+    LibMS::getInstance()->setViewingReading(NULL);
+    ui->txtISSN->setEnabled(true);
+    ui->txtISBN->setEnabled(true);
+    ui->txtAuthor->setText("");
+    ui->txtTitle->setText("");
+    ui->txtISBN->setText("");
+    ui->txtISSN->setText("");
+    ui->txtPubYear->setText("");
+    ui->txtPublisher->setText("");
+    ui->txtSubject->setText("");
+    ui->txtVolume->setText("");
+    ui->txtAvaiCount->setText("0");
+    ui->txtTotalCount->setText("0");
+
+    on_rdbJournal_toggled(ui->rdbJournal->isChecked());
 }
 

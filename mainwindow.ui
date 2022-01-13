@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>National Library</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -32,6 +32,13 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblWelcome">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnLogInOut">
@@ -58,7 +65,13 @@
        </font>
       </property>
       <property name="text">
-       <string>LIBRARY MANAGEMENT</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="res.qrc">:/img/img/pics/cover.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

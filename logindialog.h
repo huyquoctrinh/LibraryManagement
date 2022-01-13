@@ -13,7 +13,7 @@
 
 #define SUCCESSFUL_SIGN_UP "Successful. Please back to login!"
 #define FAILED_SIGN_UP "Failed to create a new account!"
-
+#define INCOMPLETE_FORM "Please fill in required fields"
 namespace Ui {
 class LoginDialog;
 }

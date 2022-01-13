@@ -118,19 +118,23 @@ void MainWindow::on_listWidget_itemSelectionChanged()
 
 void MainWindow::receiveLogin(User *currentUser)
 {
-    LibMS::getInstance()->setCurrentUser(currentUser);
-    if (currentUser->getUserType() == uStudent) { // Sign in as student
-        initStudentMenu();
-        //ui->label->setText("Hello Student, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
+    if (currentUser != NULL) {
+        LibMS::getInstance()->setCurrentUser(currentUser);
+        if (currentUser->getUserType() == uStudent) { // Sign in as student
+            initStudentMenu();
+            //ui->label->setText("Hello Student, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
+        }
+        else { // Sign in as staff
+            qInfo() << "Staff login";
+            initStaffMenu();
+            //ui->label->setText("Hello Staff, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
+        }
+        QIcon icon(":/img/img/icon/logout.png");
+        ui->btnLogInOut->setIcon(icon);
+        ui->btnLogInOut->setText("Log out");
+        QString welcomeText = "Welcome, " + QString::fromStdString(currentUser->getName());
+        ui->lblWelcome->setText(welcomeText);
     }
-    else { // Sign in as staff
-        qInfo() << "Staff login";
-        initStaffMenu();
-        //ui->label->setText("Hello Staff, " + QString::fromStdString(_currentUser->getAccount().getUsername()));
-    }
-    QIcon icon(":/img/img/icon/logout.png");
-    ui->btnLogInOut->setIcon(icon);
-    ui->btnLogInOut->setText("Log out");
 }
 
 void MainWindow::on_btnLogInOut_clicked()
@@ -141,6 +145,7 @@ void MainWindow::on_btnLogInOut_clicked()
         loginDialog->setAttribute(Qt::WA_DeleteOnClose);
         loginDialog->show();
         connect(loginDialog, SIGNAL(doLogin(User*)), this, SLOT(receiveLogin(User*)));
+
     }
     else
     {
@@ -148,6 +153,7 @@ void MainWindow::on_btnLogInOut_clicked()
         ui->btnLogInOut->setIcon(icon);
         ui->btnLogInOut->setText("Log in/Sign up");
         LibMS::getInstance()->signOut();
+        ui->lblWelcome->setText("");
         initGuestMenu();
     }
 }

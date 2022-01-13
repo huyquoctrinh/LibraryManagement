@@ -30,6 +30,8 @@ private slots:
 
     void on_btnDeactivate_clicked();
 
+    void on_btnNew_clicked();
+
 private:
     Ui::ModifyUserWidget *ui;
     Student* _currentStudent;

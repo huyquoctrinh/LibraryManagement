@@ -133,7 +133,12 @@ University toKey(string str) {
         return HCMUT;
     if (str == "IU")
         return IU;
-    return HCMUS;
+    if (str == "UEL")
+        return UEL;
+    if (str == "HCMUTE")
+        return HCMUTE;
+    if (str == "UIT")
+        return UIT;
 }
 
 string toValue(University uni)
@@ -142,6 +147,9 @@ string toValue(University uni)
         case USSH: return "USSH";
         case HCMUT: return "HCMUT";
         case IU: return "IU";
+        case UEL: return "UEL";
+        case HCMUTE: return "HCMUTE";
+        case UIT: return "UIT";
     }
     return "HCMUS";
 }

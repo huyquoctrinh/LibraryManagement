@@ -62,7 +62,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>Title</string>
+            <string>Title*</string>
            </property>
           </widget>
          </item>
@@ -139,7 +139,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>ISBN</string>
+            <string>ISBN*</string>
            </property>
           </widget>
          </item>
@@ -149,7 +149,7 @@
          <item row="1" column="2">
           <widget class="QLabel" name="label_9">
            <property name="text">
-            <string>ISSN</string>
+            <string>ISSN*</string>
            </property>
           </widget>
          </item>
@@ -231,7 +231,11 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="txtAvaiCount"/>
+          <widget class="QLineEdit" name="txtAvaiCount">
+           <property name="text">
+            <string>0</string>
+           </property>
+          </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_12">
@@ -241,7 +245,11 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="txtTotalCount"/>
+          <widget class="QLineEdit" name="txtTotalCount">
+           <property name="text">
+            <string>0</string>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="cbbStatus">
@@ -308,6 +316,12 @@
        </item>
        <item>
         <widget class="QComboBox" name="cbbFilter">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
          <item>
           <property name="text">
            <string>ISBN</string>
@@ -332,6 +346,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnNew">
+         <property name="text">
+          <string>New</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnAdd">
@@ -383,6 +404,27 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>txtTitle</tabstop>
+  <tabstop>txtAuthor</tabstop>
+  <tabstop>txtPubYear</tabstop>
+  <tabstop>rdbBook</tabstop>
+  <tabstop>rdbJournal</tabstop>
+  <tabstop>txtPublisher</tabstop>
+  <tabstop>txtISBN</tabstop>
+  <tabstop>cbbGenre</tabstop>
+  <tabstop>txtVolume</tabstop>
+  <tabstop>txtISSN</tabstop>
+  <tabstop>txtSubject</tabstop>
+  <tabstop>cbbStatus</tabstop>
+  <tabstop>txtAvaiCount</tabstop>
+  <tabstop>txtTotalCount</tabstop>
+  <tabstop>btnSearch</tabstop>
+  <tabstop>cbbFilter</tabstop>
+  <tabstop>btnAdd</tabstop>
+  <tabstop>btnRemove</tabstop>
+  <tabstop>btnUpdate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

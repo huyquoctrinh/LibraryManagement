@@ -28,6 +28,8 @@ private slots:
 
     void on_rdbJournal_toggled(bool checked);
 
+    void on_btnNew_clicked();
+
 private:
     Ui::ModifyContentWidget *ui;
 };
